@@ -4,6 +4,6 @@ export interface IProfessional {
     eid: number;
     name: string;
     email: string;
-    phone: number;
     role: string;
+    phone: string;
 }
