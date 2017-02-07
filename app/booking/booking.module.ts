@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { BookingComponent } from './booking.component';
 
+import { PercentualFilter } from '../filters/percentual';
+
 @NgModule({
     imports: [BrowserModule],
-    declarations: [ BookingComponent ],
+    declarations: [ BookingComponent, PercentualFilter],
     bootstrap: [ BookingComponent ]
 })
 

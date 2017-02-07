@@ -1,3 +1,27 @@
 <div>
     {{pageName}}
 </div>
+<div class="page-content">
+    <table class="table table-border table-striped table-hover table-responsive">
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>Cliente</td>
+                <td>Data de inicio</td>
+                <td>Data de fim</td>
+                <td>WBS</td>
+                <td>Responsável pelo Projeto Avanade</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{model.name}}</td>
+                <td>{{model.customerId}}</td>
+                <td>{{model.dtInitial} | data: "dd/MM/yyyy"}</td>
+                <td>{{model.dtFinal} | data: "dd/MM/yyyy"}</td>
+                <td>{{model.wbs}}</td>
+                <td>{{model.sponsorId}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
