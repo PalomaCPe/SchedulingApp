@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
 })
 
 export class RoleComponent{
-    pagina = 'Cargo';
+    pageName = 'Cargos';   
+
+    qualquerCoisa = {
+        "id" : 119,
+        "name": "Associate Software Engineer",
+        "brc": "A0022",
+        "description": "Cargo mais baixo da Avanade",
+        "level": 10
+    } 
 }
