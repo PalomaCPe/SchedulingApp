@@ -5,7 +5,7 @@ import { Professional } from './professional';
 @Component({
     moduleId: module.id,
     selector: 'ava-pro-app',
-    templateUrl: 'professional.component.html'
+    templateUrl: 'professional.html'
 })
 export class ProfessionalComponent implements OnInit {
 
