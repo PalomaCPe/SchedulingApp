@@ -5,11 +5,11 @@ import { Professional } from './professional';
 @Component({
     moduleId: module.id,
     selector: 'ava-pro-app',
-    templateUrl: 'professional.html'
+    templateUrl: './professional.html'
 })
 export class ProfessionalComponent implements OnInit {
 
-    private _professional: Professional = {
+    private model: Professional = {
         professionalId: 1,
         pid: 1406,
         eid: 157,
@@ -18,15 +18,6 @@ export class ProfessionalComponent implements OnInit {
         role: "CARGO TESTE",
         phone: "11 5555-555"
     } as Professional;
-
-    @Input()
-    set professional(value: Professional) {
-        this._professional = Object.assign({}, value);
-    }
-
-    get professional(): Professional {
-        return this._professional;
-    }
 
     constructor() { }
 
