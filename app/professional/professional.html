@@ -1,0 +1,47 @@
+<fieldset>
+    <form class="form-horizontal" #form="ngForm">
+        <div class="form-group">
+            <label for="pid" class="col-sm-2 control-label">PID</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="pid" name="pid" placeholder="PID" required #professionalPid [(ngModel)]="professional.pid">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="eid" class="col-sm-2 control-label">EID</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="eid" name="eid" placeholder="EID" required #professionalEid [(ngModel)]="professional.eid">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Nome</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" required #professionalName [(ngModel)]="professional.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" placeholder="email@avanade.com" required #professionalEmail
+                    [(ngModel)]="professional.email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="role" class="col-sm-2 control-label">Cargo</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="role" name="role" placeholder="Cargo" required #professionalRole [(ngModel)]="professional.role">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone" class="col-sm-2 control-label">Telefone</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="(xx) 5555-5555" required #professionalPhone
+                    [(ngModel)]="professional.phone">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-default pull-right">Submit</button>
+            </div>
+        </div>
+    </form>
+</fieldset>
