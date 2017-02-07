@@ -1,0 +1,144 @@
+.navbar-default {
+  background-color: #ff5800;
+  border-color: #ff4f00;
+}
+
+.navbar-default .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #ecdbff;
+}
+
+.navbar-default .navbar-text {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  color: #ecdbff;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+  color: #ecdbff;
+  background-color: #ff4f00;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+  color: #ecdbff;
+  background-color: #ff4f00;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #ff4f00;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ff4f00;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ffffff;
+}
+
+.navbar-default .navbar-link {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-link:hover {
+  color: #ecdbff;
+}
+
+.navbar-space {
+  margin-top: 60px;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+    color: #ecdbff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+    color: #ecdbff;
+    background-color: #ff4f00;
+  }
+}
+
+thead th {
+  background-color: #ff4f00;
+  color: white;
+  text-align: center;
+}
+
+
+/*OVERRIDE FONT AWESOME */
+
+.fa-icon {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.fa-small {
+  font-size: 1.5em;
+}
+
+.fa-avanade-orange {
+  color: #ff4f00;
+}
+
+.fa-orange {
+  color: #cc4100;
+}
+
+.fa-black {
+  color: #000;
+}
+
+
+/*OVERRIDE Bootstrap */
+
+.btn-primary {
+  background-color: #ff4f00 !important;
+  border-color: #fff !important;
+}
+
+.btn-primary.btn-outline:hover {
+  background-color: #fff !important;
+  border-color: #ff4f00 !important;
+  color: #ff4f00 !important;
+}
+
+.ava-btn-list {
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.alert-danger {
+    float: right;
+    background: white;
+}
