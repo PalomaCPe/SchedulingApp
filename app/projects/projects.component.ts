@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Projects } from './projects';
 
 @Component({
@@ -7,9 +7,9 @@ import { Projects } from './projects';
   templateUrl: 'projects.html'
 })
 
-export class ProjectComponent{
-  private model: Projects = {
-      schProjectId: 1,
+export class ProjectComponent implements OnInit{
+    private model: Projects = {
+      projectId: 1,
       name: "Projeto Teste",
       customerId: 1,
       dtInitial: new Date(),

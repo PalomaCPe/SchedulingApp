@@ -1,6 +1,6 @@
 import { IProjects } from './projects.interface';
 export class Projects implements IProjects {
-    schProjectId: number;
+    projectId: number;
     name: string;
     customerId: number;
     dtInitial: Date;
