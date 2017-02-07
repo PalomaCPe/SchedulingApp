@@ -1,5 +1,5 @@
 export interface IProjects {
-    schProjectId: number;
+    projectId: number;
     name: string;
     customerId: number;
     dtInitial: Date;
