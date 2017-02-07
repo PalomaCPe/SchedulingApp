@@ -11,5 +11,3 @@ _test-output
 _temp
 node_modules/
 api/**/*.js
-/index.html
-/app/main.ts
