@@ -1,9 +1,9 @@
-import { ICustomer } from './customer.interface';
+import { Customer } from './customer';
 
-let custumers: ICustomer[] = [];
-for (let i = 0; i < 10; i++) {
+let custumers: Customer[] = [];
+for (let i = 0; i < 100; i++) {
     custumers.push({
-        "id": i,
+        "id": i+1,
         "name": `custumer ${i}`,
         "contact": `11 5555-${i}${i}${i}${i}`,
         "email": `custumer${i}@avanade.com`,
@@ -11,4 +11,4 @@ for (let i = 0; i < 10; i++) {
     });
 }
 
-export const CUSTOMER_MOCK: ICustomer[] = custumers;
+export const CUSTOMERS: Customer[] = custumers;
