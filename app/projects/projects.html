@@ -1,3 +1,5 @@
+<ava-hdr-app>[pageName]= "'Projetos'" [icon]= "glyphicon-folder-open"</ava-hdr-app>
+
 <div class="page-header">
     <h1 class="text-center">{{pageName}}</h1>
 </div>
@@ -14,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngfor="let projects 0f PROJECTS")>
+            <tr *ngFor="let projects of projects">
                 <th>{{projects.name}}</th>
                 <th>{{projects.customerId}}</th>
                 <th>{{projects.dtInitial | date: "dd/MM/yyyy"}}</th>
@@ -24,4 +26,50 @@
             </tr>
         </tbody>
     </table>
+    <form class="form">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Nome</label>
+                    <input class="form-control" type="text" name="name" placeholder="Nome">
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="form-group">
+                    <label for="">Cliente</label>
+                    <input  class="form-control" type="text" name="customerId" placeholder="Cliente">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Data inicio</label>
+                    <input class="form-control" type="text" name="dtInitial" placeholder="Data de incio">
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="form-group">
+                    <label for="">Data fim</label>
+                    <input  class="form-control" type="text" name="dtFinal" placeholder="Data fim">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">WBS</label>
+                    <input class="form-control" type="text" name="wbs" placeholder="WBS">
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="form-group">
+                    <label for="">Profissional</label>
+                    <input  class="form-control" type="text" name="sponsorId" placeholder="Profissional">
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
