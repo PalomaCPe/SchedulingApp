@@ -12,5 +12,6 @@ import { PROJECTS } from './mock';
 export class ProjectComponent{
   pageName = "Projetos";
   projects: Projects[] = PROJECTS;
+  
 }  
 
