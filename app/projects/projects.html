@@ -1,5 +1,5 @@
 <div class="page-header">
-    {{pageName}}
+    <h1 class="text-center">{{pageName}}</h1>
 </div>
 <div class="page-content">
     <table class="table table-borded table-striped table-hover table-responsive">
@@ -14,13 +14,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>{{model.name}}</th>
-                <th>{{model.customerId}}</th>
-                <th>{{model.dtInitial | date: "dd/MM/yyyy"}}</th>
-                <th>{{model.dtFinal | date: "dd/MM/yyyy"}}</th>
-                <th>{{model.wbs}}</th>
-                <th>{{model.sponsorId}}</th>
+            <tr *ngfor="let projects 0f PROJECTS")>
+                <th>{{projects.name}}</th>
+                <th>{{projects.customerId}}</th>
+                <th>{{projects.dtInitial | date: "dd/MM/yyyy"}}</th>
+                <th>{{projects.dtFinal | date: "dd/MM/yyyy"}}</th>
+                <th>{{projects.wbs}}</th>
+                <th>{{projects.sponsorId}}</th>
             </tr>
         </tbody>
     </table>
