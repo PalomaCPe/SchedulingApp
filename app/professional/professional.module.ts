@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { ProfessionalComponent } from './professional.component';
 import {EmailHider} from '../shared/filter/EmailHider';
+import { SharedModule } from '../shared/shared.module'
 
 @NgModule({
-    imports: [BrowserModule, FormsModule],
+    imports: [BrowserModule, FormsModule, SharedModule],
     declarations: [ProfessionalComponent, EmailHider],
     bootstrap: [ProfessionalComponent]
 })
