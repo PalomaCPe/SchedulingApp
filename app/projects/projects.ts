@@ -1,4 +1,5 @@
 import { IProjects } from './projects.interface';
+
 export class Projects implements IProjects {
     projectId: number;
     name: string;
