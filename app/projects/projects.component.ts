@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Projects } from './projects';
+import { Project } from './projects';
 
 import { PROJECTS } from '../shared/mock';
 
@@ -12,7 +12,7 @@ import { PROJECTS } from '../shared/mock';
 
 export class ProjectComponent{
   pageName = "Projetos";
-  projects: Projects[] = PROJECTS;
+  project: Project[] = PROJECTS;
 
 }  
 

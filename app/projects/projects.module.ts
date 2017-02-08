@@ -8,4 +8,4 @@ import { SharedModule } from './../shared/shared.module';
   declarations: [ ProjectComponent ],
   bootstrap:    [ ProjectComponent ]
 })
-export class ProjectsModule { }
+export class ProjectModule { }
