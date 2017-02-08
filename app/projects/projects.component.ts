@@ -13,6 +13,9 @@ import { PROJECTS } from '../shared/mock';
 export class ProjectComponent{
   pageName = "Projetos";
   project: Project[] = PROJECTS;
-
+  selectedProject: Project;
+  projectDetails(project: Project): void {
+    this.selectedProject = project;
+  }
 }  
 
