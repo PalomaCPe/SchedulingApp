@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngfor="let projects 0f PROJECTS")>
+            <tr *ngfor="let projects of projects">
                 <th>{{projects.name}}</th>
                 <th>{{projects.customerId}}</th>
                 <th>{{projects.dtInitial | date: "dd/MM/yyyy"}}</th>
