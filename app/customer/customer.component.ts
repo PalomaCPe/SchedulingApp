@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ICustomer } from './customer.interface';
-import { CUSTOMER_MOCK } from './mock';
+import { Customer } from './customer';
+import { CUSTOMERS } from './mock';
 
 @Component({
     moduleId: module.id,
@@ -9,6 +9,6 @@ import { CUSTOMER_MOCK } from './mock';
 })
 
 export class CustomerComponent {
-    pageName = 'Customer';
-    customers: ICustomer[] = CUSTOMER_MOCK;
+    pageName = 'Cliente';
+    customers: Customer[] = CUSTOMERS;
 }
