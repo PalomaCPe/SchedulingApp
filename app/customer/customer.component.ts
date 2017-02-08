@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Customer } from './customer';
-import { CUSTOMERS } from './mock';
+import { CUSTOMERS } from '../shared/mock';
 
 @Component({
     moduleId: module.id,

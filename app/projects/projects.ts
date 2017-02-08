@@ -1,6 +1,6 @@
-import { IProjects } from './projects.interface';
+import { IProject } from './projects.interface';
 
-export class Projects implements IProjects {
+export class Project implements IProject {
     projectId: number;
     name: string;
     customerId: number;

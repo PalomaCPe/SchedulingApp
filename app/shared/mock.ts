@@ -1,7 +1,7 @@
 import { Booking } from '../booking/booking';
 import { Customer } from '../customer/customer';
 import { Professional } from '../professional/professional';
-import { Projects } from '../projects/projects';
+import { Project } from '../projects/projects';
 import { Role } from '../role/role';
 
 export const BOOKINGS: Booking[] = [
@@ -86,7 +86,7 @@ export const PROFESSIONALS: Professional[] = [
     }
 ];
 
-export const PROJECTS: Projects[] = [
+export const PROJECTS: Project[] = [
     {
         projectId: 1,
         name: "Projeto Teste",
