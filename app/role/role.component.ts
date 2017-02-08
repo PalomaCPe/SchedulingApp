@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { Role } from './role';
+import { ROLES } from './mock';
 
 @Component({
     moduleId: module.id,
@@ -9,12 +10,5 @@ import { Component } from '@angular/core';
 
 export class RoleComponent{
     pageName = 'Cargos';   
-
-    qualquerCoisa = {
-        "id" : 119,
-        "name": "Associate Software Engineer",
-        "brc": "A0022",
-        "description": "Cargo mais baixo da Avanade",
-        "level": 10
-    } 
+    roles : Role[] = ROLES;
 }
