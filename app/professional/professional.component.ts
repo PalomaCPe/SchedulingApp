@@ -1,29 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Professional } from './professional';
+import { PROFESSIONALS } from './mock'
 
 @Component({
     moduleId: module.id,
     selector: 'ava-pro-app',
     templateUrl: './professional.html'
 })
-export class ProfessionalComponent implements OnInit {
+export class ProfessionalComponent {
 
-    private model: Professional = {
-        professionalId: 1,
-        pid: 1406,
-        eid: 157,
-        name: "NOME TESTE",
-        email: "EMAIL@AVANADE.COM",
-        role: "CARGO TESTE",
-        phone: "11 5555-555"
-    } as Professional;
-
-    constructor() { }
-
-    ngOnInit() {
-
-    }
-
-
+    pageName = "Profissionais"
+    professionals: Professional[] = PROFESSIONALS; 
 }

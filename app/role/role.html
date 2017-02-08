@@ -13,11 +13,14 @@
             </tr>
         </thead>
         <tbody>
-            <td>{{ qualquerCoisa.id }}</td>
-            <td>{{ qualquerCoisa.name}}</td>
-            <td>{{ qualquerCoisa.brc }}</td>
-            <td>{{ qualquerCoisa.description }}</td>
-            <td>{{ qualquerCoisa.level }}</td>
+            <tr *ngFor="let role of roles">
+                <td>{{ role.id }}</td>
+                <td>{{ role.name}}</td>
+                <td>{{ role.brc }}</td>
+                <td>{{ role.description }}</td>
+                <td>{{ role.level }}</td>
+            </tr>
+
         </tbody>
     </table>
 </div>

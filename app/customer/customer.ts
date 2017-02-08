@@ -1,6 +1,6 @@
 import { ICustomer } from './customer.interface';
 
-export class Role implements ICustomer{
+export class Customer implements ICustomer{
     id: number;
     name: string;
     contact: string;
