@@ -1,6 +1,6 @@
-<ava-hdr-app [pageName]="'Clientes'" [icon]="'glyphicon glyphicon-user'"></ava-hdr-app>
-<div class="page-content">
-    <table class="table table-borded table-striped table-hover table-responsive">
+<ava-hdr-app [pageName]="pageName" [icon]="'glyphicon glyphicon-user'"></ava-hdr-app>
+<div class="page-content" >
+    <table class="table table-borded table-striped table-hover table-responsive" *ngIf="!selectedCustomer">
         <thead>
             <tr>
                 <td>Id</td>
@@ -11,53 +11,60 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let custumer of customers">
-                <td>{{ custumer.id }}</td>
-                <td>{{ custumer.name}}</td>
-                <td>{{ custumer.contact }}</td>
-                <td>{{ custumer.email }}</td>
-                <td>{{ custumer.sponsor }}</td>
+            <tr *ngFor="let customer of customers"(click)="customerDetails(customer)">
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.name}}</td>
+                <td>{{ customer.contact }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ getSponsorName(customer) }}</td>
             </tr>
         </tbody>
     </table>
 </div>
-<hr>
-<fieldset>
-    <form class="form-horizontal" #form="ngForm">
-        <div class="form-group">
-            <label for="id" class="col-sm-2 control-label">ID</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" id="id" name="id" placeholder="ID" required [(ngModel)]="customers[0].id">
+<form *ngIf="selectedCustomer" #form="ngForm">
+    <fieldset>
+        <div class="row">
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="number" class="form-control" id="id" name="id" placeholder="ID" [disabled]="selectedCustomer.id" required [(ngModel)]="selectedCustomer.id">
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">Nome</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nome completo" required [(ngModel)]="customers[0].name">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome completo" required [(ngModel)]="selectedCustomer.name">
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contato</label>
+                    <input type="text" class="form-control" id="contact" name="contact" placeholder="Contato" required [(ngModel)]="selectedCustomer.contact">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="email@avanade.com" required [(ngModel)]="selectedCustomer.email">
+                </div>
+                <div class="form-group">
+                    <label for="sponsors">Responsavel</label>
+                    <select class="form-control" name="sponsors" required [(ngModel)]="selectedCustomer.sponsor">
+                        <option [value]="sponsor.professionalId" *ngFor="let sponsor of sponsors">{{sponsor.name}}</option>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="contact" class="col-sm-2 control-label">Contato</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="contact" name="contact" placeholder="Contato" required [(ngModel)]="customers[0].contact">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" (click)="save()" [disabled]="form.invalid"> <span class="glyphicon glyphicon-ok"></span> Salvar</button>
+                    <button type="button" class="btn btn-default" (click)="reset()"><span class="glyphicon glyphicon-refresh"></span> Resetar</button>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email" placeholder="email@avanade.com" required [(ngModel)]="customers[0].email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="sponsor" class="col-sm-2 control-label">Responsavel</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" id="sponsor" name="sponsor" placeholder="(xx) 5555-5555" required [(ngModel)]="customers[0].sponsor">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12">
-                <button type="button" class="btn btn-default pull-right">Submit</button>
-            </div>
-        </div>
-    </form>
-</fieldset>
+
+    </fieldset>
+</form>

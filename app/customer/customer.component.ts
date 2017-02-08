@@ -1,14 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { Customer } from './customer';
-import { CUSTOMERS } from '../shared/mock';
+import { Professional } from './../professional/professional';
+import { CUSTOMERS, PROFESSIONALS } from './../shared/mock';
 
 @Component({
     moduleId: module.id,
     selector: 'ava-cus-app',
-    templateUrl: 'customer.html'
+    templateUrl: 'customer.html',
+    styles: ['tbody > tr { cursor:pointer }']
 })
 
 export class CustomerComponent {
-    pageName = 'Cliente';
-    customers: Customer[] = CUSTOMERS;
+    private pageName = 'Clientes';
+    private customers: Customer[] = CUSTOMERS
+    private sponsors: Professional[] = PROFESSIONALS
+
+    private selectedCustomer: Customer;
+    private initialSelectedCustomer: Customer;
+
+    customerDetails(customer: Customer): void {
+        this.selectedCustomer = customer;
+        this.initialSelectedCustomer = Object.assign({}, customer);
+    }
+    reset(): void {
+        this.selectedCustomer = Object.assign({}, this.initialSelectedCustomer);
+    }
+    save(): void {
+        this.selectedCustomer = null;
+        this.initialSelectedCustomer = null;
+    }
+
+    getSponsorName(customer: Customer): string {
+        let sponsorName: string = "---"
+        for (let i = 0; i < this.sponsors.length; i++) {
+            if (this.sponsors[i].professionalId == customer.sponsor) sponsorName = this.sponsors[i].name;
+        }
+        return sponsorName;
+    }
 }
