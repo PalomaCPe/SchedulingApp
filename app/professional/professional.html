@@ -4,22 +4,26 @@
 <div class="page-content">
     <table class="table table-borded table-striped table-hover table-responsive">
         <thead>
-            <th>ID</th>
-            <th>PID</th>
-            <th>EID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Cargo</th>
-            <th>Telefone</th>
+            <tr>    
+                <th>ID</th>
+                <th>PID</th>
+                <th>EID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Cargo</th>
+                <th>Telefone</th>  
+            </tr>
         </thead>
         <tbody>
-            <td>{{model.professionalId}}</td>
-            <td>{{model.pid}}</td>
-            <td>{{model.eid}}</td>
-            <td>{{model.name}}</td>
-            <td>{{model.email | emailHider}}</td>
-            <td>{{model.role}}</td>
-            <td>{{model.phone}}</td>
+            <tr *ngFor="let professional of professionals">
+                <td>{{professional.professionalId}}</td>
+                <td>{{professional.pid}}</td>
+                <td>{{professional.eid}}</td>
+                <td>{{professional.name}}</td>
+                <td>{{professional.email | emailHider}}</td>
+                <td>{{professional.role}}</td>
+                <td>{{professional.phone}}</td>
+            </tr>
         </tbody>
     </table>
 </div>

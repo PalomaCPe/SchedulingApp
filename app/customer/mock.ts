@@ -1,14 +1,25 @@
 import { Customer } from './customer';
 
-let custumers: Customer[] = [];
-for (let i = 0; i < 100; i++) {
-    custumers.push({
-        "id": i+1,
-        "name": `custumer ${i}`,
-        "contact": `11 5555-${i}${i}${i}${i}`,
-        "email": `custumer${i}@avanade.com`,
-        "sponsor": i * 37 + 32
-    });
-}
-
-export const CUSTOMERS: Customer[] = custumers;
+export const CUSTOMERS: Customer[] = [
+    {
+        "id": 1,
+        "name": "customer 1",
+        "contact": "11 5555-1111",
+        "email": "customer1@avanade.com",
+        "sponsor": 123
+    },
+    {
+        "id": 2,
+        "name": "customer 2",
+        "contact": "11 5555-2222",
+        "email": "customer2@avanade.com",
+        "sponsor": 321
+    },
+    {
+        "id": 3,
+        "name": "customer 3",
+        "contact": "11 5555-3333",
+        "email": "custome31@avanade.com",
+        "sponsor": 213
+    }
+]
