@@ -14,6 +14,6 @@ export class HeaderComponent implements OnInit{
     iconClass: string;
 
     ngOnInit(): void{
-        this.iconClass = this.icon;
+        this.iconClass = `glyphicon ${this.icon}`;
     }
 }
