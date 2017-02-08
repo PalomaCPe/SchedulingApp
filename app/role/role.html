@@ -1,11 +1,9 @@
-<div class="page-header">
-    <h3>{{ pageName }}</h3>
-</div>
+<ava-hdr-app [pageName]="'Cargos'" [icon]="'glyphicon glyphicon-education'"></ava-hdr-app>
+
 <div class="page-content">
     <table class="table table-border table-striped table-hover table-responsive">
         <thead>
             <tr>
-                <td>Id do Cargo</td>
                 <td>Nome do Cargo</td>
                 <td>BRC</td>
                 <td>Descrição</td>
@@ -13,8 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let role of roles">
-                <td>{{ role.id }}</td>
+            <tr *ngFor="let role of roles" (click)="roleDetails(role)">
                 <td>{{ role.name}}</td>
                 <td>{{ role.brc }}</td>
                 <td>{{ role.description }}</td>
@@ -23,22 +20,24 @@
         </tbody>
     </table>
 
-    <form action="" name="teste">
+    <form name="teste" *ngIf="role">
         <div class="form-group col-md-6">
             <label for="">Nome do Cargo</label>
-            <input type="text" name="nameRole" class="form-control" placeholder="Nome do Cargo">
+            <input type="text" name="nameRole" class="form-control" placeholder="Nome do Cargo" [(ngModel)]="role.name">
         </div>
         <div class="form-group col-md-6">
             <label for="">BRC</label>
-            <input type="text" name="brcRole" class="form-control" placeholder="BRC">
+            <input type="text" name="brcRole" class="form-control" placeholder="BRC" [(ngModel)]="role.brc">
         </div>
         <div class="form-group col-md-6">
             <label for="">Descrição do Cargo</label>
-            <input type="text" name="descriptionRole" class="form-control" placeholder="Descrição do Cargo">
+            <input type="text" name="descriptionRole" class="form-control" placeholder="Descrição do Cargo" [(ngModel)]="role.description">
         </div>
         <div class="form-group col-md-6">
             <label for="">Nível</label>
-            <input type="text" name="levelRole" class="form-control" placeholder="Nível">
+            <select name="levels" class="form-control"  [(ngModel)]="role.level">
+                <option *ngFor="let level of levels" value="{{level}}">{{level}}</option>
+            </select>
         </div>
     </form>
 </div>
