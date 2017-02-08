@@ -1,6 +1,6 @@
-import { IProjects } from './projects.interface';
+import { Projects } from './projects';
 
-export const PROJECTS: IProjects[] = [{
+export const PROJECTS: Projects[] = [{
     projectId: 1,
     name: "Projeto Teste",
     customerId: 1,

@@ -1,6 +1,4 @@
-<div class="page-header">
-    <h1 class="text-center">{{pageName}}</h1>
-</div>
+<ava-hdr-app [pageName]="'Alocação'" [icon]=""></ava-hdr-app>
 <div class="page-content">
     <table class="table table-borded table-striped table-hover table-responsive">
         <thead>
@@ -14,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngfor="let projects of projects">
+            <tr *ngFor="let projects of projects">
                 <th>{{projects.name}}</th>
                 <th>{{projects.customerId}}</th>
                 <th>{{projects.dtInitial | date: "dd/MM/yyyy"}}</th>
