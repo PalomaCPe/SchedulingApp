@@ -1,4 +1,4 @@
-export interface IProjects {
+export interface IProject {
     projectId: number;
     name: string;
     customerId: number;

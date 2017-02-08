@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Projects } from './projects';
-import { PROJECTS } from './mock';
+import { Project } from './projects';
+
+import { PROJECTS } from '../shared/mock';
 
 
 @Component({
@@ -11,6 +12,10 @@ import { PROJECTS } from './mock';
 
 export class ProjectComponent{
   pageName = "Projetos";
-  projects: Projects[] = PROJECTS;
+  project: Project[] = PROJECTS;
+  selectedProject: Project;
+  projectDetails(project: Project): void {
+    this.selectedProject = project;
+  }
 }  
 

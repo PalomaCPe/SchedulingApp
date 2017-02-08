@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { BookingComponent } from './booking.component';
 
-import { PercentualFilter } from '../filters/percentual';
+import { PercentualFilter } from '../shared/filter/percentual';
+
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [BrowserModule],
+    imports: [BrowserModule, SharedModule],
     declarations: [ BookingComponent, PercentualFilter],
     bootstrap: [ BookingComponent ]
 })

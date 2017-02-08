@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Role } from './role';
-import { ROLES } from './mock';
+import { ROLES } from '../shared/mock';
 
 @Component({
     moduleId: module.id,
