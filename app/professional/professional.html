@@ -28,32 +28,32 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="">PID</label>
-                <input type="text" class="form-control" placeholder="{{professional.pid}}">
+                <input type="text" [ngModel]="professional.pid" (ngModelChange)="professional.pid = $event" class="form-control" name="pidName" placeholder="{{professional.pid}}">
             </div>
             <div class="col-md-6">
                 <label for="">EID</label>
-                <input type="text" class="form-control" placeholder="{{professional.eid}}">
+                <input type="text" name="eidImput" [ngModel]="professional.eid" (ngModelChange)="professional.eid = $event" class="form-control" placeholder="{{professional.eid}}">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <label for="">Nome</label>
-                <input type="text" class="form-control" placeholder="{{professional.name}}">
+                <input type="text" name="nameInput" [ngModel]="professional.name" (ngModelChange)="professional.name = $event" class="form-control" placeholder="{{professional.name}}">
             </div>
             <div class="col-md-6">
                 <label for="">Email</label>
-                <input type="email" class="form-control" placeholder="{{professional.email}}">
+                <input type="email" name="emailInput" [ngModel]="professional.email" (ngModelChange)="professional.email = $event" class="form-control" placeholder="{{professional.email}}">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <label for="">Telefone</label>
-                <input type="text" class="form-control" placeholder="{{professional.phone}}">
+                <input type="text" name="telInput" [ngModel]="professional.phone" (ngModelChange)="professional.phone = $event" class="form-control" placeholder="{{professional.phone}}">
             </div>
             <div class="col-md-6">
                 <label for="Cargo">Cargo</label>
                 <select name="Cargos" class="form-control" required>
-                    <option *ngFor="let role of roles" value="{{professional.relRole.name}}">{{professional.relRole.name}}</option>
+                    <option *ngFor="let role of roles" name="roleOption" value="{{professional.relRole.name}}">{{professional.relRole.name}}</option>
                 </select>
             </div>
         </div>
