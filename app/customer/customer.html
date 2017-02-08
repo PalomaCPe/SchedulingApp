@@ -13,11 +13,13 @@
             </tr>
         </thead>
         <tbody>
-            <td>{{ qualquerCoisa.id }}</td>
-            <td>{{ qualquerCoisa.name}}</td>
-            <td>{{ qualquerCoisa.contact }}</td>
-            <td>{{ qualquerCoisa.email }}</td>
-            <td>{{ qualquerCoisa.sponsor }}</td>
+            <tr *ngFor="let custumer of customers">
+                <td>{{ custumer.id }}</td>
+                <td>{{ custumer.name}}</td>
+                <td>{{ custumer.contact }}</td>
+                <td>{{ custumer.email }}</td>
+                <td>{{ custumer.sponsor }}</td>
+            </tr>
         </tbody>
     </table>
 </div>

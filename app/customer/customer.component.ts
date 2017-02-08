@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ICustomer } from './customer.interface';
+import { CUSTOMER_MOCK } from './mock';
 
 @Component({
     moduleId: module.id,
@@ -8,12 +10,5 @@ import { Component } from '@angular/core';
 
 export class CustomerComponent {
     pageName = 'Customer';
-
-    qualquerCoisa = {
-        "id": 3465,
-        "name": "Aalskjd akjhls ",
-        "contact": "adlkajsldkjasd",
-        "email": "asdads@asasd.asd",
-        "sponsor": 1235
-    }
+    customers: ICustomer[] = CUSTOMER_MOCK;
 }
