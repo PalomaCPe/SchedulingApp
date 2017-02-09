@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Router } from '@angular/router';
 
+import { CustomerModule } from './customer/customer.module';
+
 import { BookingModule } from './booking/booking.module';
 
 import { RoleModule } from './role/role.module';
@@ -14,12 +16,14 @@ import { AppComponent } from './app.component';
     imports: [BrowserModule,
     BookingModule,
     RoleModule,
+    CustomerModule,
     RouterModule.forRoot([
         { path: 'welcome', component: WelcomeComponent},
         { path: '', redirectTo:'/welcome', pathMatch:'full'}
     ])],
+
     declarations: [AppComponent, WelcomeComponent],
     bootstrap: [AppComponent]
 })
 
-export class AppModule{}
+export class AppModule { }
