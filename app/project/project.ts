@@ -1,4 +1,4 @@
-import { IProject } from './projects.interface';
+import { IProject } from './project.interface';
 
 export class Project implements IProject {
     projectId: number;

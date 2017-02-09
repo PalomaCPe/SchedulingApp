@@ -1,4 +1,4 @@
-import { Project } from './../projects/projects';
+import { Project } from './../project/project';
 import { Booking } from '../booking/booking';
 import { Customer } from '../customer/customer';
 import { Professional } from '../professional/professional';
