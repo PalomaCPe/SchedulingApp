@@ -7,11 +7,11 @@ import { ROLES } from '../shared/mock';
 
 @Injectable()
 export class RoleService{
-        pegarListaCargos(): Role[]{
+        getRoleList(): Role[]{
             return ROLES;
         }
 
-        listarCargos() : number[]{
+        levelsList() : number[]{
             return [6, 7, 8, 9, 10, 11, 12];
         }
 }
