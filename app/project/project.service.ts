@@ -10,6 +10,14 @@ import { Customer } from '../customer/customer';
 import { CUSTOMERS } from '../shared/mock';
 
 @Injectable()
-export class ProjectService {
-    
+export class ProjectService {  
+    getListProject(): Promise<Project[]>{
+        return Promise.resolve(PROJECTS);
+    }
+    getListProfessional(): Professional[]{
+        return PROFESSIONALS;
+    } 
+    getListCustomer(): Customer[]{
+        return CUSTOMERS;
+    }         
 }
