@@ -1,4 +1,4 @@
-<ava-hdr-app [pageName]="'Alocação'" [icon]=""></ava-hdr-app>
+<ava-hdr-app [pageName]="'Projetos'"[icon]="'glyphicon-folder-open'"></ava-hdr-app>
 <div class="page-content">
     <table class="table table-borded table-striped table-hover table-responsive">
         <thead>
@@ -12,22 +12,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let projects of projects">
-                <th>{{projects.name}}</th>
-                <th>{{projects.customerId}}</th>
-                <th>{{projects.dtInitial | date: "dd/MM/yyyy"}}</th>
-                <th>{{projects.dtFinal | date: "dd/MM/yyyy"}}</th>
-                <th>{{projects.wbs}}</th>
-                <th>{{projects.sponsorId}}</th>
+            <tr *ngFor="let project of projects" (click)="projectDetails(project)">
+                <td>{{project.name}}</td>
+                <th>{{project.customerId}}</th>
+                <th>{{project.dtInitial | date: "dd/MM/yyyy"}}</th>
+                <th>{{project.dtFinal | date: "dd/MM/yyyy"}}</th>
+                <th>{{project.wbs}}</th>
+                <th>{{project.sponsorId}}</th>
             </tr>
         </tbody>
     </table>
-    <form class="form">
+    <form class="form" name="projectForm" *ngIf="selectedProject">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="">Nome</label>
-                    <input class="form-control" type="text" name="name" placeholder="Nome">
+                    <input [(ngModel)]="selectedProject.name" class="form-control" type="text" name="name" placeholder="Nome">
                 </div>
             </div>
             <div class="col-md-6">
@@ -63,7 +63,9 @@
             <div class="col-md-6">
                <div class="form-group">
                     <label for="">Profissional</label>
-                    <input  class="form-control" type="text" name="sponsorId" placeholder="Profissional">
+                    <select  class="form-control" type="text" name="sponsorId" placeholder="Profissional">
+                        <option *ngFor="let project of projects" value="{{project.professional.name}}"></option>
+                    </select>
                 </div>
             </div>
         </div>
