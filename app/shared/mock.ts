@@ -6,20 +6,24 @@ import { Role } from '../role/role';
 
 export const BOOKINGS: Booking[] = [
     {
-        "id": 1,
-        "startDate": new Date(Date.now()),
-        "endDate": new Date(Date.now()),
-        "percentual": 30,
-        "projectId": 1,
-        "professionalId": 1
+        id: 1,
+        startDate: new Date("2017-03-11T02:00:00.000Z"),
+        endDate: new Date("2017-05-17T02:00:00.000Z"),
+        percentual: 30,
+        projectId: 1,
+        professionalId: 2,
+        project: null,
+        professional: null
     },
     {
-        "id": 2,
-        "startDate": new Date(Date.now()),
-        "endDate": new Date(Date.now()),
-        "percentual": 50,
-        "projectId": 1,
-        "professionalId": 1
+        id: 2,
+        startDate: new Date("2017-01-02T02:00:00.000Z"),
+        endDate: new Date("2017-12-30T02:00:00.000Z"),
+        percentual: 50,
+        projectId: 2,
+        professionalId: 3,
+        project: null,
+        professional: null
     }
 ];
 
@@ -55,7 +59,8 @@ export const PROFESSIONALS: Professional[] = [
         name: "Thalita",
         email: "thalita@avanade.com",
         role: "Associate Software Engineer",
-        phone: "17 1234-5678"
+        phone: "17 1234-5678",
+        relRole: null
     },
     {
         professionalId: 2,
@@ -64,7 +69,8 @@ export const PROFESSIONALS: Professional[] = [
         name: "Victor",
         email: "victor@avanade.com",
         role: "Associate Software Engineer",
-        phone: "14 9876-5432"
+        phone: "14 9876-5432",
+        relRole: null
     },
     {
         professionalId: 3,
@@ -73,7 +79,8 @@ export const PROFESSIONALS: Professional[] = [
         name: "Thais",
         email: "thais@avanade.com",
         role: "Associate Software Engineer",
-        phone: "19 1234-5678"
+        phone: "19 1234-5678",
+        relRole: null
     },
     {
         professionalId: 4,
@@ -82,7 +89,8 @@ export const PROFESSIONALS: Professional[] = [
         name: "Paloma",
         email: "paloma@avanade.com",
         role: "Associate Software Engineer",
-        phone: "12 9876-5432"
+        phone: "12 9876-5432",
+        relRole: null
     }
 ];
 
