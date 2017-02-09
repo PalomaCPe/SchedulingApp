@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-target="#navBarHr">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            <a class="navbar-brand" routerLink="/"><img src="./libs/images/avanade-logo.png" height="20px;" alt="Avanade" /></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navBarHr">
+            <ul class="nav navbar-nav">
+               <li><a routerLink="/bookings">Alocações</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+
+    </div>
+
+    <!-- /.container-fluid -->
+</nav>
+<div class="container navbar-space">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-offset-1 col-sm-10 col-md-10 affix-content">
+            <div class="container col-md-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
