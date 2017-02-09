@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Booking } from './booking';
-import { BOOKINGS } from '../shared/mock';
 
 import { Project } from '../project/project';
 import { Professional } from '../professional/professional';
+
+import { BookingService } from './booking.service';
 
 import { PROJECTS } from '../shared/mock';
 import { PROFESSIONALS } from '../shared/mock';
@@ -16,13 +17,17 @@ import { PROFESSIONALS } from '../shared/mock';
 })
 
 export class BookingComponent implements OnInit {
-    bookings: Booking[] = BOOKINGS;    
+    constructor(private _bookingService: BookingService){}
+
+    bookings: Booking[];    
     booking: Booking;
 
     projects: Project[];
     professionals: Professional[];
 
     ngOnInit(){
+        this.bookings = this._bookingService.getBookingList();
+
         this.projects = PROJECTS;
         this.professionals = PROFESSIONALS;
 
