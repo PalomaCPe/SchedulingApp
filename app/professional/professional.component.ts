@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Professional } from './professional';
 import { Role } from '../role/role'
-import { PROFESSIONALS } from '../shared/mock'
-import { ROLES } from '../shared/mock'
+import { ProfessionalService } from './professional.service';
 
 
 @Component({
@@ -12,18 +11,22 @@ import { ROLES } from '../shared/mock'
     templateUrl: './professional.html'
 })
 export class ProfessionalComponent {
-    professionals: Professional[] = PROFESSIONALS;
+    constructor (private _professionalService: ProfessionalService){}
+
+    professionals: Professional[];
     professional: Professional;
-    roles: Role[] = ROLES;
+    roles: Role[];
+
+    ngOnInit(){
+        this.professionals = this._professionalService.getProfessionalList();  
+    }
+
+    getProfessionalDetails (professional:Professional):Professional {
+        return professional
+    }
 
     profissionalDetails (professional:Professional) { 
-    this.professional = professional;
-    for (let role of this.roles){
-        if (this.professional.role === role.name) {
-            this.professional.roleId = role.id;
-            this.professional.role = role.name;
-        }
+    
     }
- }
 }
 
