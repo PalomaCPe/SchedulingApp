@@ -4,37 +4,27 @@ import { Customer } from './customer';
 import { Professional } from './../professional/professional';
 
 import { CustomerService } from './customer.service';
+import { ProfessionalService } from './../professional/professional.service';
 
 @Component({
     moduleId: module.id,
     selector: 'ava-cus-app',
     templateUrl: 'customer.html',
-    styles: ['tbody > tr { cursor:pointer }']
+    styles: ['tbody > tr > td > span { cursor:pointer }']
 })
 
 export class CustomerComponent implements OnInit {
 
-    constructor(private _customerService: CustomerService) { }
+    constructor(private _customerService: CustomerService, private _professionalService: ProfessionalService) { }
 
     private customers: Customer[];
     private sponsors: Professional[];
-
-    private selectedCustomer: Customer;
-
     ngOnInit() {
-         this.customers = this._customerService.getCustomers();
-         this.sponsors = this._customerService.getSponsors();
-    }
-
-    customerDetails(customer: Customer): void {
-        this.selectedCustomer = customer;
+        this.customers = this._customerService.getCustomers();
+        this.sponsors = this._professionalService.getProfessionalList();
     }
 
     getSponsorName(customer: Customer): string {
-        let sponsorName: string = "---"
-        for (let i = 0; i < this.sponsors.length; i++) {
-            if (this.sponsors[i].professionalId == customer.sponsor) sponsorName = this.sponsors[i].name;
-        }
-        return sponsorName;
+        return this.sponsors.find(s => s.professionalId === customer.sponsor).name;
     }
 }

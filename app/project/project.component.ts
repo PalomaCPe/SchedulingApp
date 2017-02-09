@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Project } from './project';
-
 import { ProjectService } from './project.service';
 
 import { Professional } from '../professional/professional';
-
 import { Customer } from '../customer/customer';
 
 @Component({
