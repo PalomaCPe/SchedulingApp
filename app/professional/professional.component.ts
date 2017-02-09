@@ -20,7 +20,8 @@ export class ProfessionalComponent {
     this.professional = professional;
     for (let role of this.roles){
         if (this.professional.role === role.name) {
-            this.professional.relRole = role;
+            this.professional.roleId = role.id;
+            this.professional.role = role.name;
         }
     }
  }

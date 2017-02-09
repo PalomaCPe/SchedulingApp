@@ -7,10 +7,10 @@ export class Professional implements IProfessional {
     pid: number;
     eid: number;
     name: string;
-    role: string;
+    roleId: number;
     email: string;
     phone: string;
 
     //relacionamentos
-    relRole: Role;
+    role: Role;
 }

@@ -53,7 +53,7 @@
             <div class="col-md-6">
                 <label for="Cargo">Cargo</label>
                 <select name="Cargos" class="form-control" required>
-                    <option *ngFor="let role of roles" name="roleOption" value="{{professional.relRole.name}}">{{professional.relRole.name}}</option>
+                    <option *ngFor="let role of roles" name="roleOption" value="{{role.name}}">{{professional.role}}</option>
                 </select>
             </div>
         </div>

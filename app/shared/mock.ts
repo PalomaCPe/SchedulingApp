@@ -58,9 +58,9 @@ export const PROFESSIONALS: Professional[] = [
         eid: 157,
         name: "Thalita",
         email: "thalita@avanade.com",
-        role: "Associate Software Engineer",
+        roleId: 1,
         phone: "17 1234-5678",
-        relRole: null
+        role: null
     },
     {
         professionalId: 2,
@@ -68,9 +68,9 @@ export const PROFESSIONALS: Professional[] = [
         eid: 123,
         name: "Victor",
         email: "victor@avanade.com",
-        role: "Associate Software Engineer",
+        roleId: 2,
         phone: "14 9876-5432",
-        relRole: null
+        role: null
     },
     {
         professionalId: 3,
@@ -78,9 +78,9 @@ export const PROFESSIONALS: Professional[] = [
         eid: 189,
         name: "Thais",
         email: "thais@avanade.com",
-        role: "Associate Software Engineer",
+        roleId: 3,
         phone: "19 1234-5678",
-        relRole: null
+        role: null
     },
     {
         professionalId: 4,
@@ -88,9 +88,9 @@ export const PROFESSIONALS: Professional[] = [
         eid: 163,
         name: "Paloma",
         email: "paloma@avanade.com",
-        role: "Associate Software Engineer",
+        roleId: 4,
         phone: "12 9876-5432",
-        relRole: null
+        role: null
     }
 ];
 
