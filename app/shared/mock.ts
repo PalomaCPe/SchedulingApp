@@ -97,7 +97,7 @@ export const PROFESSIONALS: Professional[] = [
 export const PROJECTS: Project[] = [
     {
         projectId: 1,
-        name: "Projeto Teste",
+        name: "Projeto 1",
         customerId: 1,
         dtInitial: new Date(),
         dtFinal: new Date(),
@@ -105,8 +105,8 @@ export const PROJECTS: Project[] = [
         sponsorId: 1,
     },
     {
-        projectId: 1,
-        name: "Projeto Teste",
+        projectId: 2,
+        name: "Projeto 2",
         customerId: 1,
         dtInitial: new Date(),
         dtFinal: new Date(),
@@ -114,8 +114,8 @@ export const PROJECTS: Project[] = [
         sponsorId: 1,
     },
     {
-        projectId: 1,
-        name: "Projeto Teste",
+        projectId: 3,
+        name: "Projeto 3",
         customerId: 1,
         dtInitial: new Date(),
         dtFinal: new Date(),
