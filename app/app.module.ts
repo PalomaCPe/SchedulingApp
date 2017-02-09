@@ -4,6 +4,8 @@ import { RouterModule, Router } from '@angular/router';
 
 import { BookingModule } from './booking/booking.module';
 
+import { RoleModule } from './role/role.module';
+
 import { WelcomeComponent } from './welcome.component';
 
 import { AppComponent } from './app.component';
@@ -11,6 +13,7 @@ import { AppComponent } from './app.component';
 @NgModule({
     imports: [BrowserModule,
     BookingModule,
+    RoleModule,
     RouterModule.forRoot([
         { path: 'welcome', component: WelcomeComponent},
         { path: '', redirectTo:'/welcome', pathMatch:'full'}
