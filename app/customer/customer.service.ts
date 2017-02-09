@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 
 import { Customer } from './customer';
-import { Professional } from '../professional/professional';
-import { CUSTOMERS, PROFESSIONALS } from '../shared/mock';
+import { CUSTOMERS } from '../shared/mock';
 
 
 @Injectable()
 export class CustomerService {
 
-    getCustomers(): Customer[] {
-        return CUSTOMERS;
+
+    getCustomerById(customer: Customer): Customer {
+        return CUSTOMERS.find(c => c.id === customer.id);
     }
 
-    getSponsors(): Professional[] {
-        return PROFESSIONALS;
+    getCustomers(): Customer[] {
+        return CUSTOMERS;
     }
 
 }
