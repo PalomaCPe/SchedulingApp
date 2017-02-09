@@ -20,8 +20,8 @@ export class RoleComponent{
     constructor( private _roleservice: RoleService){}  
 
     ngOnInit(){
-        this.roles = this._roleservice.pegarListaCargos();
-        this.levels = this._roleservice.listarCargos();
+        this.roles = this._roleservice.getRoleList();
+        this.levels = this._roleservice.levelsList();
     }
     
   roleDetails(role : Role){
