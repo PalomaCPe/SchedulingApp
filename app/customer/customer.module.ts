@@ -5,9 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './../shared/shared.module';
 import { CustomerComponent } from './customer.component';
 
+import { CustomerService } from './customer.service';
+
 @NgModule({
     imports: [BrowserModule, FormsModule, SharedModule],
     declarations: [CustomerComponent],
+    providers: [CustomerService],
     bootstrap: [CustomerComponent]
 })
 

@@ -1,4 +1,4 @@
-<ava-hdr-app [pageName]="pageName" [icon]="'glyphicon glyphicon-user'"></ava-hdr-app>
+<ava-hdr-app [pageName]="'Clientes'" [icon]="'glyphicon glyphicon-user'"></ava-hdr-app>
 <div class="page-content" >
     <table class="table table-borded table-striped table-hover table-responsive" *ngIf="!selectedCustomer">
         <thead>
@@ -24,7 +24,7 @@
 <form *ngIf="selectedCustomer" #form="ngForm">
     <fieldset>
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="id">ID</label>
                     <input type="number" class="form-control" id="id" name="id" placeholder="ID" [disabled]="selectedCustomer.id" required [(ngModel)]="selectedCustomer.id">

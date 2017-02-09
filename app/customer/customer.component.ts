@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Customer } from './customer';
 import { Professional } from './../professional/professional';
-import { CUSTOMERS, PROFESSIONALS } from './../shared/mock';
+
+import { CustomerService } from './customer.service';
 
 @Component({
     moduleId: module.id,
@@ -11,13 +12,20 @@ import { CUSTOMERS, PROFESSIONALS } from './../shared/mock';
     styles: ['tbody > tr { cursor:pointer }']
 })
 
-export class CustomerComponent {
-    private pageName = 'Clientes';
-    private customers: Customer[] = CUSTOMERS
-    private sponsors: Professional[] = PROFESSIONALS
+export class CustomerComponent implements OnInit {
+
+    constructor(private _customerService: CustomerService) { }
+
+    private customers: Customer[];
+    private sponsors: Professional[];
 
     private selectedCustomer: Customer;
     private initialSelectedCustomer: Customer;
+
+    ngOnInit() {
+         this.customers = this._customerService.getCustomers();
+         this.sponsors = this._customerService.getSponsors();
+    }
 
     customerDetails(customer: Customer): void {
         this.selectedCustomer = customer;
