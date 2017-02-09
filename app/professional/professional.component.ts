@@ -1,8 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Professional } from './professional';
-import { Role } from '../role/role'
 import { ProfessionalService } from './professional.service';
+
+import { Role } from '../role/role'
+import { RoleService } from '../role/role.service';
+
 
 
 @Component({
@@ -19,16 +22,20 @@ export class ProfessionalComponent {
 
     ngOnInit(){
         this.professionals = this._professionalService.getProfessionalList();
-        console.log(this.professionals);  
+        //this.roles = this._roleService.getRoleList();
     }
 
-    /*getProfessionalDetails (professional:Professional):Professional {
-        
-        return
-    }*/
+    getProfessionalDetails (professional:Professional):Professional {
+        /*for(let role of this.roles){
+            if(professional.roleId === role.id) {
+                professional.role = role;
+            }
+        }*/
+        return professional;
+    }
 
     profissionalDetails (professional:Professional) { 
-        this.professional = professional;
+        this.professional = this.getProfessionalDetails(professional);
     }
 }
 

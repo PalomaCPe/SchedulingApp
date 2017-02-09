@@ -6,6 +6,8 @@ import { CustomerModule } from './customer/customer.module';
 
 import { BookingModule } from './booking/booking.module';
 
+
+import { ProfessionalModule } from './professional/professional.module';
 import { RoleModule } from './role/role.module';
 
 import { WelcomeComponent } from './welcome.component';
@@ -13,13 +15,10 @@ import { WelcomeComponent } from './welcome.component';
 import { AppComponent } from './app.component';
 
 @NgModule({
-    imports: [BrowserModule,
-    BookingModule,
-    RoleModule,
-    CustomerModule,
+    imports: [BrowserModule,BookingModule, ProfessionalModule,RoleModule,CustomerModule,
     RouterModule.forRoot([
         { path: 'welcome', component: WelcomeComponent},
-        { path: '', redirectTo:'/welcome', pathMatch:'full'}
+        { path: '', redirectTo:'/welcome', pathMatch:'full'},
     ])],
 
     declarations: [AppComponent, WelcomeComponent],
