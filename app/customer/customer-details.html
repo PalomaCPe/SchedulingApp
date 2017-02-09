@@ -1,0 +1,41 @@
+<form #form="ngForm">
+    <fieldset>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="number" class="form-control" id="id" name="id" placeholder="ID" [disabled]="customer.id" required [(ngModel)]="customer.id">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome completo" required [(ngModel)]="customer.name">
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contato</label>
+                    <input type="text" class="form-control" id="contact" name="contact" placeholder="Contato" required [(ngModel)]="customer.contact">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="email@avanade.com" required [(ngModel)]="customer.email">
+                </div>
+                <div class="form-group">
+                    <label for="sponsors">Responsavel</label>
+                    <select class="form-control" name="sponsors" required [(ngModel)]="customer.sponsor">
+                        <option [value]="sponsor.professionalId" *ngFor="let sponsor of sponsors">{{sponsor.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary" [routerLink]="'/customers'"> <span class="glyphicon glyphicon-chevron-left"></span>Lista de Clientes</button>
+        </div>
+    </div>
+</form>
