@@ -18,15 +18,17 @@ export class ProfessionalComponent {
     roles: Role[];
 
     ngOnInit(){
-        this.professionals = this._professionalService.getProfessionalList();  
+        this.professionals = this._professionalService.getProfessionalList();
+        console.log(this.professionals);  
     }
 
-    getProfessionalDetails (professional:Professional):Professional {
-        return professional
-    }
+    /*getProfessionalDetails (professional:Professional):Professional {
+        
+        return
+    }*/
 
     profissionalDetails (professional:Professional) { 
-    
+        this.professional = professional;
     }
 }
 
