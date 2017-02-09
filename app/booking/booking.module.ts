@@ -7,8 +7,10 @@ import { PercentualFilter } from '../shared/filter/percentual';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
-    imports: [BrowserModule, SharedModule],
+    imports: [BrowserModule, SharedModule, FormsModule],
     declarations: [ BookingComponent, PercentualFilter],
     bootstrap: [ BookingComponent ]
 })
