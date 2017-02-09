@@ -15,24 +15,42 @@ import { CUSTOMERS } from '../shared/mock';
   templateUrl: 'project.html'
 })
 
-export class ProjectComponent{
-  pageName = "Projetos";
+export class ProjectComponent implements OnInit {
   
+  pageName = "Projetos";
+
   projects: Project[] = PROJECTS;
   professionals: Professional[];
   customers: Customer[];
 
   selectedProject: Project;
-  
+
+  ngOnInit(){
+    this.customers = CUSTOMERS;
+    this.professionals = PROFESSIONALS;
+
+    this.getProjects();
+  }
+
+  getProjects() {
+    this.projects.forEach((item) => {
+        this.getProfessional(item);
+        this.getCustomer(item);
+    });
+  }
+
   projectDetails(project: Project): void {
     this.selectedProject = project;
-   
     this.selectedProject.professional = PROFESSIONALS.find(p => p.professionalId === project.sponsorId);
     this.selectedProject.customer = CUSTOMERS.find(p => p.id === project.customerId);
-    
-    this.professionals = PROFESSIONALS;
-    this.customers = CUSTOMERS;
   }
   
-}  
+  getProfessional(project: Project): void {
+    project.professional = this.professionals.find(professional => professional.pid == project.sponsorId);    
+  }
 
+  getCustomer(project: Project): void {
+    project.customer = this.customers.find(customer => customer.id == project.customerId);
+  }
+
+}  

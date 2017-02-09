@@ -103,6 +103,8 @@ export const PROJECTS: Project[] = [
         dtFinal: new Date(),
         wbs: "WBSTESTE",
         sponsorId: 1,
+        professional:null,
+        customer:null
     },
     {
         projectId: 2,
@@ -112,6 +114,8 @@ export const PROJECTS: Project[] = [
         dtFinal: new Date(),
         wbs: "WBSTESTE",
         sponsorId: 1,
+        professional:null,
+        customer:null
     },
     {
         projectId: 3,
@@ -121,6 +125,8 @@ export const PROJECTS: Project[] = [
         dtFinal: new Date(),
         wbs: "WBSTESTE",
         sponsorId: 1,
+        professional:null,
+        customer:null
     }
 ];
 
