@@ -1,6 +1,6 @@
 <ava-hdr-app [pageName]="'Clientes'" [icon]="'glyphicon glyphicon-user'"></ava-hdr-app>
-<div class="page-content" >
-    <table class="table table-borded table-striped table-hover table-responsive" *ngIf="!selectedCustomer">
+<div class="page-content">
+    <table class="table table-borded table-striped table-hover table-responsive">
         <thead>
             <tr>
                 <td>Id</td>
@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let customer of customers"(click)="customerDetails(customer)">
+            <tr *ngFor="let customer of customers" (click)="customerDetails(customer)">
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.name}}</td>
                 <td>{{ customer.contact }}</td>
@@ -22,6 +22,7 @@
     </table>
 </div>
 <form *ngIf="selectedCustomer" #form="ngForm">
+    <hr>
     <fieldset>
         <div class="row">
             <div class="col-md-3">
@@ -31,7 +32,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -56,15 +56,5 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary" (click)="save()" [disabled]="form.invalid"> <span class="glyphicon glyphicon-ok"></span> Salvar</button>
-                    <button type="button" class="btn btn-default" (click)="reset()"><span class="glyphicon glyphicon-refresh"></span> Resetar</button>
-                </div>
-            </div>
-        </div>
-
     </fieldset>
 </form>

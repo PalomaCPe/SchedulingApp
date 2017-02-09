@@ -20,7 +20,6 @@ export class CustomerComponent implements OnInit {
     private sponsors: Professional[];
 
     private selectedCustomer: Customer;
-    private initialSelectedCustomer: Customer;
 
     ngOnInit() {
          this.customers = this._customerService.getCustomers();
@@ -29,14 +28,6 @@ export class CustomerComponent implements OnInit {
 
     customerDetails(customer: Customer): void {
         this.selectedCustomer = customer;
-        this.initialSelectedCustomer = Object.assign({}, customer);
-    }
-    reset(): void {
-        this.selectedCustomer = Object.assign({}, this.initialSelectedCustomer);
-    }
-    save(): void {
-        this.selectedCustomer = null;
-        this.initialSelectedCustomer = null;
     }
 
     getSponsorName(customer: Customer): string {
