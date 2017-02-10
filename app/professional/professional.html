@@ -9,11 +9,12 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Cargo</th>
-                <th>Telefone</th>  
+                <th>Telefone</th>
+                <th>Detalhes</th>  
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let professional of professionals" (click)="profissionalDetails(professional)">
+            <tr *ngFor="let professional of professionals">
                 <td>{{professional.professionalId}}</td>
                 <td>{{professional.pid}}</td>
                 <td>{{professional.eid}}</td>
@@ -21,7 +22,13 @@
                 <td>{{professional.email | emailHider}}</td>
                 <td>{{professional.role}}</td>
                 <td>{{professional.phone}}</td>
+                <td>
+                    <button type="button" class="btn btn-default" aria-label="Right Align" [routerLink]="'/professional/details/'+ professional.professionalId">
+                        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
+    <router-outlet></router-outlet>
 </div>

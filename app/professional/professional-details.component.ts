@@ -30,9 +30,11 @@ export class ProfessionalDetailComponent {
         })
         this.professionals = this._professionalService.getProfessionalList();
         this.roles = this._roleService.getRoleList();
+        this.professional = this.professionals.find(p => p.professionalId == this.id);
+        this.getProfessionalRole(this.professional);
     }
 
-    getProfessional() {
-        this.professional = this.professionals.find(p => p.professionalId == this.id);
+    getProfessionalRole(professional: Professional) {
+        professional.role = this.roles.find(r => professional.roleId == r.id);
     }
 }

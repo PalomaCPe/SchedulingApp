@@ -1,0 +1,38 @@
+<div class="page-content">
+    <form name="professionalForm">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="">PID</label>
+                <input type="text" class="form-control" name="pidName" placeholder="{{professional.pid}}">
+            </div>
+            <div class="col-md-6">
+                <label for="">EID</label>
+                <input type="text" name="eidImput" class="form-control" placeholder="{{professional.eid}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="">Nome</label>
+                <input type="text" name="nameInput" class="form-control" placeholder="{{professional.name}}">
+            </div>
+            <div class="col-md-6">
+                <label for="">Email</label>
+                <input type="email" name="emailInput" class="form-control" placeholder="{{professional.email}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="">Telefone</label>
+                <input type="text" name="telInput" class="form-control" placeholder="{{professional.phone}}">
+            </div>
+            <div class="col-md-6">
+                <label for="Cargo">Cargo</label>
+                <select name="Cargos" class="form-control" required>                  
+                    <option *ngFor="let role of roles" name="roleOption" value="">{{role.name}}</option>
+                </select>
+            </div>
+        </div>
+        <!-- Button Submit -->
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>

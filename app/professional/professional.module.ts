@@ -13,9 +13,9 @@ import { ProfessionalService } from './professional.service';
 @NgModule({
     imports: [BrowserModule, FormsModule, SharedModule, RouterModule.forRoot([
         {path:'professionals', component: ProfessionalComponent},
-        {path:'professionals/detail/:id', component: ProfessionalDetailComponent}
+        {path:'professional/details/:id', component: ProfessionalDetailComponent}
     ])],
-    declarations: [ProfessionalComponent, EmailHider],
+    declarations: [ProfessionalComponent, EmailHider, ProfessionalDetailComponent],
     providers: [ProfessionalService]
 })
 export class ProfessionalModule { }
