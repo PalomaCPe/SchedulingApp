@@ -14,4 +14,8 @@ export class RoleService{
         levelsList() : number[]{
             return [6, 7, 8, 9, 10, 11, 12];
         }
+
+        getRoleById(role : Role){
+            return ROLES.find(r => r.id === role.id);
+        }
 }
