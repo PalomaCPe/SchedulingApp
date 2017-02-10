@@ -11,8 +11,11 @@ import { CUSTOMERS } from '../shared/mock';
 
 @Injectable()
 export class ProjectService {  
-    getListProject(): Promise<Project[]>{
-        return Promise.resolve(PROJECTS);
+    getListProject(): Project[]{
+        return PROJECTS;
+    }
+    getProjectById(id: number): Project{
+        return PROJECTS.find(p => p.projectId === id);
     }
     getListProfessional(): Professional[]{
         return PROFESSIONALS;

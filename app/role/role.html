@@ -8,6 +8,7 @@
                 <td>BRC</td>
                 <td>Descrição</td>
                 <td>Nível do Cargo</td>
+                <td>Detalhes</td>
             </tr>
         </thead>
         <tbody>
@@ -16,28 +17,10 @@
                 <td>{{ role.brc }}</td>
                 <td>{{ role.description }}</td>
                 <td>{{ role.level }}</td>
+                <td><span class="glyphicon glyphicon-folder-open" [routerLink]="'/roles/details/' + role.id"></span></td>
             </tr>
         </tbody>
     </table>
 
-    <form name="teste" *ngIf="role">
-        <div class="form-group col-md-6">
-            <label for="">Nome do Cargo</label>
-            <input type="text" name="nameRole" class="form-control" placeholder="Nome do Cargo" [(ngModel)]="role.name">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="">BRC</label>
-            <input type="text" name="brcRole" class="form-control" placeholder="BRC" [(ngModel)]="role.brc">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="">Descrição do Cargo</label>
-            <input type="text" name="descriptionRole" class="form-control" placeholder="Descrição do Cargo" [(ngModel)]="role.description">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="">Nível</label>
-            <select name="levels" class="form-control"  [(ngModel)]="role.level">
-                <option *ngFor="let level of levels" value="{{level}}">{{level}}</option>
-            </select>
-        </div>
-    </form>
+
 </div>
