@@ -14,14 +14,21 @@ import { RoleService } from '../role/role.service';
     templateUrl: './professional.html'
 })
 export class ProfessionalComponent {
-    constructor (private _professionalService: ProfessionalService){}
+    constructor (private _professionalService: ProfessionalService, private _roleService: RoleService){}
 
     professionals: Professional[];
     professional: Professional;
     roles: Role[];
 
     ngOnInit(){
-        this.professionals = this._professionalService.getProfessionalList();
+        this._professionalService.getProfessionalList()
+        .then((getProfessionals: Professional[]) => {
+            this.professionals = getProfessionals;
+            return  this._roleService.getRoleList();
+        })
+        .then((getRoles: Role[]) => {
+            this.roles = getRoles;
+        });
         //this.roles = this._roleService.getRoleList();
     }
 
