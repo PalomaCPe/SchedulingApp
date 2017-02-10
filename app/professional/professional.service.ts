@@ -6,7 +6,7 @@ import { PROFESSIONALS } from '../shared/mock';
 @Injectable ()
 export class ProfessionalService{
 
-    getProfessionalList(): Professional[]{
-        return PROFESSIONALS;
+    getProfessionalList(): Promise <Professional[]>{
+        return Promise.resolve(PROFESSIONALS);
     }
 }
