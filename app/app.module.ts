@@ -12,6 +12,8 @@ import { WelcomeComponent } from './welcome.component';
 
 import { AppComponent } from './app.component';
 
+import { LoaderComponent } from './shared/loader/loader.component'; 
+
 @NgModule({
     imports: [BrowserModule,BookingModule, ProfessionalModule, RoleModule, CustomerModule, ProjectModule,
     RouterModule.forRoot([
@@ -19,7 +21,7 @@ import { AppComponent } from './app.component';
         { path: '', redirectTo:'/welcome', pathMatch:'full'},
     ])],
 
-    declarations: [AppComponent, WelcomeComponent],
+    declarations: [AppComponent, WelcomeComponent, LoaderComponent],
     bootstrap: [AppComponent]
 })
 
