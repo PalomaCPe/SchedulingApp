@@ -21,8 +21,8 @@ export class CustomerDetailsComponent implements OnInit {
     ngOnInit() {
         this._router.params.subscribe((params: Params) => this.customer.id = +params['id']);
 
-        this.customer = this._customerService.getCustomerById(this.customer);
-        this.sponsors = this._professionalService.getProfessionalList();
+        this._customerService.getCustomerById(this.customer).then((customer: Customer) => { this.customer = customer }).catch((error: Error) => { throw error });
+        this._professionalService.getProfessionalList().then((sponsorsList: Professional[]) => this.sponsors = sponsorsList).catch((error: Error) => { throw error });
     }
 
 }

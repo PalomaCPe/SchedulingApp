@@ -19,9 +19,10 @@ export class CustomerComponent implements OnInit {
 
     private customers: Customer[];
     private sponsors: Professional[];
+    
     ngOnInit() {
-        this.customers = this._customerService.getCustomers();
-        this.sponsors = this._professionalService.getProfessionalList();
+        this._customerService.getCustomers().then((customerList: Customer[]) => this.customers = customerList).catch((error: Error) => { throw error });
+        this._professionalService.getProfessionalList().then((sponsorsList: Professional[]) => this.sponsors = sponsorsList).catch((error: Error) => { throw error });
     }
 
     getSponsorName(customer: Customer): string {

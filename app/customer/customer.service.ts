@@ -8,12 +8,12 @@ import { CUSTOMERS } from '../shared/mock';
 export class CustomerService {
 
 
-    getCustomerById(customer: Customer): Customer {
-        return CUSTOMERS.find(c => c.id === customer.id);
+    getCustomerById(customer: Customer): Promise<Customer> {
+        return Promise.resolve(CUSTOMERS.find(c => c.id === customer.id))
     }
 
-    getCustomers(): Customer[] {
-        return CUSTOMERS;
+    getCustomers(): Promise<Customer[]> {
+        return Promise.resolve(CUSTOMERS);
     }
 
 }
