@@ -20,4 +20,5 @@ export class ProjectService {
     getListCustomer(): Customer[]{
         return CUSTOMERS;
     }         
+    
 }

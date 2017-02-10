@@ -3,58 +3,23 @@
     <table class="table table-borded table-striped table-hover table-responsive">
         <thead>
             <tr>
-                <td>Id</td>
+                <td>ID</td>
                 <td>Nome</td>
                 <td>Contato</td>
                 <td>E-mail</td>
                 <td>Responsavel pelo Cliente</td>
+                <td>Detalhes</td>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let customer of customers" (click)="customerDetails(customer)">
+            <tr *ngFor="let customer of customers">
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.name}}</td>
                 <td>{{ customer.contact }}</td>
                 <td>{{ customer.email }}</td>
                 <td>{{ getSponsorName(customer) }}</td>
+                <td><span class="glyphicon glyphicon-folder-open" [routerLink]=" '/customers/details/' + customer.id"></span></td>
             </tr>
         </tbody>
     </table>
 </div>
-<form *ngIf="selectedCustomer" #form="ngForm">
-    <hr>
-    <fieldset>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="id">ID</label>
-                    <input type="number" class="form-control" id="id" name="id" placeholder="ID" [disabled]="selectedCustomer.id" required [(ngModel)]="selectedCustomer.id">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome completo" required [(ngModel)]="selectedCustomer.name">
-                </div>
-                <div class="form-group">
-                    <label for="contact">Contato</label>
-                    <input type="text" class="form-control" id="contact" name="contact" placeholder="Contato" required [(ngModel)]="selectedCustomer.contact">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="email@avanade.com" required [(ngModel)]="selectedCustomer.email">
-                </div>
-                <div class="form-group">
-                    <label for="sponsors">Responsavel</label>
-                    <select class="form-control" name="sponsors" required [(ngModel)]="selectedCustomer.sponsor">
-                        <option [value]="sponsor.professionalId" *ngFor="let sponsor of sponsors">{{sponsor.name}}</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-</form>
