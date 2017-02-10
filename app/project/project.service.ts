@@ -14,8 +14,8 @@ export class ProjectService {
     getListProject(): Project[]{
         return PROJECTS;
     }
-    getProjectById(id: number): Project{
-        return PROJECTS.find(p => p.projectId === id);
+    getProjectById(project: Project): Project{
+        return PROJECTS.find(p => p.projectId === project.projectId);
     }
     getListProfessional(): Professional[]{
         return PROFESSIONALS;

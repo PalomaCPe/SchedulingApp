@@ -9,65 +9,20 @@
                 <th>Data de fim</th>
                 <th>WBS</th>
                 <th>Responsável pelo Projeto Avanade</th>
+                <th>Detalhes</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let project of projects" (click)="projectDetails(project)">
+            <tr *ngFor="let project of projects">
                 <td>{{project.name}}</td>
-                <th>{{project.customerId}}</th>
-                <th>{{project.dtInitial | date: "dd/MM/yyyy"}}</th>
-                <th>{{project.dtFinal | date: "dd/MM/yyyy"}}</th>
-                <th>{{project.wbs}}</th>
-                <th>{{project.sponsorId}}</th>
+                <td>{{project.customerId}}</td>
+                <td>{{project.dtInitial | date: "dd/MM/yyyy"}}</td>
+                <td>{{project.dtFinal | date: "dd/MM/yyyy"}}</td>
+                <td>{{project.wbs}}</td>
+                <td>{{project.sponsorId}}</td>
+                <td><span class="glyphicon glyphicon-folder-open" [routerLink]=" '/projects/details/' + project.id"></span></td>
             </tr>
         </tbody>
     </table>
-    <form class="form" name="projectForm" *ngIf="selectedProject">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="">Nome</label>
-                    <input [(ngModel)]="selectedProject.name" class="form-control" type="text" name="name" placeholder="Nome">
-                </div>
-            </div>
-            <div class="col-md-6">
-               <div class="form-group">
-                    <label for="">Cliente</label>
-                    <input  class="form-control" type="text" name="customerId" placeholder="Cliente">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="">Data inicio</label>
-                    <input class="form-control" type="text" name="dtInitial" placeholder="Data de incio">
-                </div>
-            </div>
-            <div class="col-md-6">
-               <div class="form-group">
-                    <label for="">Data fim</label>
-                    <input  class="form-control" type="text" name="dtFinal" placeholder="Data fim">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="">WBS</label>
-                    <input class="form-control" type="text" name="wbs" placeholder="WBS">
-                </div>
-            </div>
-            <div class="col-md-6">
-               <div class="form-group">
-                    <label for="">Profissional</label>
-                    <select  class="form-control" type="text" name="sponsorId" placeholder="Profissional">
-                        <option *ngFor="let project of projects" value="{{project.professional.name}}"></option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </form>
 </div>
+ 
