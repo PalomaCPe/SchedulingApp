@@ -28,18 +28,17 @@ export class ProfessionalDetailComponent {
         this._router.params.subscribe((params: Params) => {
             this.id = +params['id'];    
         })
-        
+
         this._professionalService.getProfessionalList()
         .then((getProfessionals: Professional[]) => {
             this.professionals = getProfessionals;
+            this.professional = this.professionals.find(p => p.professionalId == this.id);
             return this._roleService.getRoleList();
         })
         .then((getRoles:Role[]) => {
             this.roles = getRoles;
-        });
-
-        this.professional = this.professionals.find(p => p.professionalId == this.id);
-        this.getProfessionalRole(this.professional);
+            this.getProfessionalRole(this.professional);
+        });               
     }
 
     getProfessionalRole(professional: Professional) {
