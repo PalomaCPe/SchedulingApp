@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Booking } from './booking';
-
-import { Project } from '../project/project';
-import { Professional } from '../professional/professional';
-
 import { BookingService } from './booking.service';
 
-import { PROJECTS } from '../shared/mock';
-import { PROFESSIONALS } from '../shared/mock';
+import { Project } from '../project/project';
+import { ProjectService } from '../project/project.service';
+
+import { Professional } from '../professional/professional';
+import { ProfessionalService } from '../professional/professional.service';
+
+import 'rxjs/add/operator/toPromise';
 
 @Component({
     moduleId: module.id,
@@ -17,54 +18,32 @@ import { PROFESSIONALS } from '../shared/mock';
 })
 
 export class BookingComponent implements OnInit {
-    constructor(private _bookingService: BookingService){}
+    constructor(private _bookingService: BookingService,
+        private _professionalService: ProfessionalService,
+        private _projectService: ProjectService) { }
 
-    bookings: Booking[];    
-    booking: Booking;
+    bookings: Booking[];
 
     projects: Project[];
     professionals: Professional[];
 
-    ngOnInit(){
-        this.bookings = this._bookingService.getBookingList();
+    ngOnInit() {
+        this._professionalService.getProfessionalList()
+            .then((professionals: Professional[]) => {
+                this.professionals = professionals;
+                return this._projectService.getListProject();
+            })
+            .then((projects: Project[]) => {
+                this.projects = projects;
+                return this._bookingService.getBookingList();
+            })
+            .then((bookings: Booking[]) => {
+                this.bookings = bookings;
 
-        this.projects = PROJECTS;
-        this.professionals = PROFESSIONALS;
-
-        this.getBookings();
-    }
-
-    getBookingsDetails(booking: Booking){
-        this.booking = booking;
-        
-        this.booking.project = this.projects.find(p => p.projectId === booking.projectId);
-        this.booking.professional = this.professionals.find(p => p.professionalId === booking.professionalId);
-    }
-
-    getBookings() {
-        this.bookings.forEach((item) => {
-            this.getProfessionalDetails(item);
-            this.getProjectDetails(item);
-        });
-    }
-
-    getProjectDetails(booking: Booking) {
-        booking.project = this.projects.find(project => project.projectId == booking.projectId);
-    }
-
-    getProfessionalDetails(booking: Booking) {
-        booking.professional = this.professionals.find(professional => professional.pid == booking.professionalId);
-    }
-
-    startDateChanged(value: Date): void {
-        this.booking.startDate = value;
-    }
-
-    endDateChanged(value: Date): void {
-        this.booking.endDate = value;
-    }
-
-    onBack(){
-        this.booking = null;
+                this.bookings.forEach((obj) => {
+                    obj.project = this.projects.find(p => p.projectId === obj.projectId);
+                    obj.professional = this.professionals.find(p => p.professionalId === obj.professionalId);
+                });
+            });
     }
 }
