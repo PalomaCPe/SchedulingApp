@@ -25,32 +25,32 @@ export class ProjectComponent implements OnInit {
   customers: Customer[];
   
   ngOnInit(){
-    this.getProjects();
+    this.projects = this._projectService.getListProject();
     this.customers = this._projectService.getListCustomer();
     this.professionals = this._projectService.getListProfessional();
-  }
 
-  getProjects(): void{
-    this._projectService.getListProject().then(projects => this.projects = projects);
-    
+    this.getProjects();
+  }
+ 
+  getProjects() {
     this.projects.forEach((item) => {
-          this.getProfessional(item);
-          this.getCustomer(item);
+        this.getProfessional(item);
+        this.getCustomer(item);
     });
   }
-
-  projectDetails(project: Project): void {
+  
+  projectDetails(project: Project) {
     this.selectedProject = project;
-    this.selectedProject.professional = this.professionals.find(professional => professional.professionalId == project.sponsorId); 
-    this.selectedProject.customer = this.customers.find(customer => customer.id === project.customerId);
+    this.selectedProject.professional = this.professionals.find(p => p.professionalId == project.sponsorId); 
+    this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
   }
 
-  getProfessional(project: Project): void {
-    project.professional = this.professionals.find(professional => professional.professionalId == project.sponsorId);    
+  getProfessional(project: Project) {
+    project.professional = this.professionals.find(p => p.professionalId == project.sponsorId);    
   }
 
-  getCustomer(project: Project): void {
-    project.customer = this.customers.find(customer => customer.id == project.customerId);
+  getCustomer(project: Project) {
+    project.customer = this.customers.find(c => c.id == project.customerId);
   }
 
   backState(){
