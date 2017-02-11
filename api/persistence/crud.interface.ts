@@ -1,7 +1,7 @@
 export interface ICrud<T>{
     create(entity: T): Promise<T>;
 
-    read(): Promise<T[]>;
+    list(): Promise<T[]>;
 
     read(id: number): Promise<T>;
 
