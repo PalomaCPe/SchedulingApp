@@ -1,5 +1,6 @@
-import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Customer } from './customer';
 import { Professional } from './../professional/professional';
@@ -16,13 +17,22 @@ export class CustomerDetailsComponent implements OnInit {
     private customer: Customer = new Customer();
     private sponsors: Professional[] = [];
 
-    constructor(private _router: ActivatedRoute, private _customerService: CustomerService, private _professionalService: ProfessionalService) { }
+    constructor(
+        private _router: ActivatedRoute,
+        private _customerService: CustomerService,
+        private _professionalService: ProfessionalService,
+        private _location: Location
+    ) { }
 
     ngOnInit() {
         this._router.params.subscribe((params: Params) => this.customer.id = +params['id']);
 
         this._customerService.getCustomerById(this.customer).then((customer: Customer) => { this.customer = customer }).catch((error: Error) => { throw error });
         this._professionalService.getProfessionalList().then((sponsorsList: Professional[]) => this.sponsors = sponsorsList).catch((error: Error) => { throw error });
+    }
+
+    goBack() {
+        this._location.back();
     }
 
 }
