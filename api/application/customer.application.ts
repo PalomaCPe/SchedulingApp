@@ -3,16 +3,18 @@ import { CustomerPersistence } from '../persistence/customer.persistence';
 
 export class CustomerApplication {
 
+    private _customerPersistence: CustomerPersistence = new CustomerPersistence();
+
     createCustomer(customer: Customer): Promise<Customer> {
         return Promise.resolve(customer);
     }
 
     getCustomer(id: number): Promise<Customer> {
-        return new CustomerPersistence().read(id);
+        return this._customerPersistence.read(id);
     }
 
     getCustomers(): Promise<Customer[]> {
-        return new CustomerPersistence().list();
+        return this._customerPersistence.list();
     }
 
     updateCustomer(id: number): Promise<Customer> {
