@@ -14,4 +14,6 @@ export class Project implements IProject {
 
     customer: Customer;
     professional: Professional;
+
+    deleted: boolean;
 }

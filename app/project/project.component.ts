@@ -29,16 +29,23 @@ export class ProjectComponent implements OnInit {
   selectedProject: Project; 
 
   ngOnInit(){
-    this._projectService.getProfessionalList().then((p: Professional[]) => {this.professionals = p;});
-    
-    this._projectService.getCustomers().then((c: Customer[]) => { this.customers = c; });
 
-    this._projectService.getListProject().then((p: Project[]) => {
-      this.projects = p;
-      this.projects.forEach((obj) => {
-        obj.professional = this.professionals.find(p => p.professionalId === obj.sponsorId);
-        obj.customer = this.customers.find(c => c.id === obj.customerId);
+    this._professionalService.getProfessionalList()
+      .then((p: Professional[]) => {
+          this.professionals = p;
+          return this._projectService.getCustomers();
+      })
+      .then((c: Customer[]) => {
+          this.customers = c;
+          return this._projectService.getListProject();
+      })
+      .then((p: Project[]) => {
+          this.projects = p;
+          this.projects.forEach((obj) => {
+            obj.professional = this.professionals.find(p => p.professionalId === obj.sponsorId);
+            obj.customer = this.customers.find(c => c.id === obj.customerId);
+          });
       });
-    });
+
   }
 }  
