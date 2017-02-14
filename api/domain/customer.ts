@@ -6,6 +6,6 @@ export class Customer {
     sponsor: number;
 
     constructor(id?: number) {
-        this.id = id;
+        this.id = id || null;
     }
 }

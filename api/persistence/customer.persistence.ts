@@ -9,18 +9,18 @@ export class CustomerPersistence implements ICrud<Customer> {
     }
 
     read(id: number): Promise<Customer> {
-        return null;
+        return Promise.resolve(CUSTOMERS.find(customer => customer.id === id));
     }
 
     create(customer: Customer): Promise<Customer> {
-        return null;
+        return Promise.resolve(new Customer());
     }
 
     update(customer: Customer): Promise<Customer> {
-        return null;
+        return Promise.resolve(customer);
     }
 
     delete(id: number): Promise<boolean> {
-        return null;
+        return Promise.resolve(id ? true : false);
     }
 }
