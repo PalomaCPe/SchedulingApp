@@ -21,6 +21,22 @@ export class ProjectService {
 
     constructor(private _http: Http) { }
 
+    /*getListProject(): Promise<Project[]>{
+        return Promise.resolve(PROJECTS);
+    }
+
+    getProjectById(id: number): Promise<Project>{
+        return Promise.resolve(PROJECTS.find(p => p.projectId === id));
+    }
+   
+    getProfessionalList(): Promise<Professional[]>{
+        return Promise.resolve(PROFESSIONALS);
+    } 
+    
+    getCustomers(): Promise<Customer[]>{
+        return Promise.resolve(CUSTOMERS);
+    }     
+    */
     getListProject(): Promise<Project[]>{
         return this._http.get(this.projectUrl)
             .toPromise()

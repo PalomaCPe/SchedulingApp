@@ -28,8 +28,8 @@ export class ProjectDetailsComponent implements OnInit {
     ) { }
     
     private selectedProject: Project = new Project();
-    private professionals: Professional[] = [];;
-    private customers: Customer[] = [];;
+    private professionals: Professional[] = [];
+    private customers: Customer[] = [];
     id: number;
     
     ngOnInit() {
@@ -39,7 +39,7 @@ export class ProjectDetailsComponent implements OnInit {
         this._professionalService.getProfessionalList()
             .then((professionals: Professional[]) => {
                 this.professionals = professionals;
-                return this._projectService.getCustomers();
+                return this._customerService.getCustomers();
             })
             .then((customers: Customer[]) => {
                 this.customers = customers;
@@ -53,7 +53,8 @@ export class ProjectDetailsComponent implements OnInit {
             });
 
     }
-   projectDetails(project: Project) {
+    
+    projectDetails(project: Project) {
         this.selectedProject = project;
         this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId); 
         this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
@@ -66,6 +67,7 @@ export class ProjectDetailsComponent implements OnInit {
     getCustomer(project: Project) {
         project.customer = this.customers.find(c => c.id === project.customerId);
     }
+    
     backState(){
         this._location.back();
         this.selectedProject = null;

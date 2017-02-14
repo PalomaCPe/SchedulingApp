@@ -12,6 +12,7 @@ export class ProjectApplication{
         return new ProjectPersistence().read(id);
     }
     createProject(project: Project): Promise<Project> {
+        project.deleted = false;
         return Promise.resolve(project);
     }
     updateProject(id: number): Promise<Project> {
