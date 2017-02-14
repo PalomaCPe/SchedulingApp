@@ -7,4 +7,19 @@ export class ProjectApplication{
 
         return projectPersistence.list();
     }
+    
+    /************************/
+
+    getProject(id: number): Promise<Project> {
+
+            return null;
+    }
+    updateProject(id: number): Promise<Project> {
+
+            return null;
+    }
+    deleteProject(id: number): Promise<Project> {
+
+            return null;
+    }
 }

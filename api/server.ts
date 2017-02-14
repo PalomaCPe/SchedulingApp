@@ -7,6 +7,8 @@ import { json } from 'body-parser';
 import { bookingRouter } from './service/booking.service';
 import { customerRouter } from './service/customer.service';
 import { roleRouter } from './service/role.service';
+import { projectRouter } from './service/project.service';
+import { professionalRouter } from './service/professional.service';
 
 const app: express.Application = express();
 
@@ -17,6 +19,8 @@ app.use(json());
 app.use('/api/booking/', bookingRouter);
 app.use('/api/customer/', customerRouter);
 app.use('/api/role/', roleRouter);
+app.use('/api/project/', projectRouter);
+app.use('/api/professional/', professionalRouter);
 
 app.get('*', (request: Request, response: Response) => {
     response.sendFile(path.join(__dirname, '../index.html'));
