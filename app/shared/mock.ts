@@ -65,7 +65,8 @@ export const PROFESSIONALS: Professional[] = [
         email: "thalita@avanade.com",
         roleId: 1,
         phone: "17 1234-5678",
-        role: null
+        role: null,
+        deleted: false
     },
     {
         professionalId: 2,
@@ -75,7 +76,8 @@ export const PROFESSIONALS: Professional[] = [
         email: "victor@avanade.com",
         roleId: 2,
         phone: "14 9876-5432",
-        role: null
+        role: null,
+        deleted: false
     },
     {
         professionalId: 3,
@@ -85,7 +87,8 @@ export const PROFESSIONALS: Professional[] = [
         email: "thais@avanade.com",
         roleId: 3,
         phone: "19 1234-5678",
-        role: null
+        role: null,
+        deleted: false
     },
     {
         professionalId: 4,
@@ -95,7 +98,8 @@ export const PROFESSIONALS: Professional[] = [
         email: "paloma@avanade.com",
         roleId: 4,
         phone: "12 9876-5432",
-        role: null
+        role: null,
+        deleted: false
     }
 ];
 
