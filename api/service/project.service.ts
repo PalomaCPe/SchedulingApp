@@ -12,13 +12,13 @@ projectRouter.get('/list', (request: Request, response: Response) => {
             response.json(result);
         });
 });
-/*
+
 projectRouter.get('/:id', (request: Request, response: Response) => {
     let projectApplication: ProjectApplication = new ProjectApplication();
 
     let id: number = +request.params.id;
 
-    projectApplication.getProject(id).then((result: Project[]) => {
+    projectApplication.getProject(id).then((result: Project) => {
         response.json(result);
     });
 });
@@ -32,4 +32,21 @@ projectRouter.post('/post', (request: Request, response: Response) => {
         response.json(result);
     });
 });
-*/
+projectRouter.put('/:id', (request: Request, response: Response) => {
+    let projectApplication: ProjectApplication = new ProjectApplication();
+
+    let id: number = +request.params.id;
+
+    projectApplication.updateProject(id).then((result: Project) => {
+        response.json(result);
+    });
+});
+projectRouter.delete('/:id', (request: Request, response: Response) => {
+    let projectApplication: ProjectApplication = new ProjectApplication();
+
+    let id: number = +request.params.id;
+
+    projectApplication.deleteProject(id).then((result: Project) => {
+        response.json(result);
+    });
+});

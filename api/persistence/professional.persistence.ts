@@ -13,11 +13,11 @@ export class ProfessionalPersistence implements ICrud<Professional> {
         return null;
     }
 
-    create(professional: Professional): Promise<Professional>{
+    create(booking: Professional): Promise<Professional>{
         return null;
     }
 
-    update(professional: Professional): Promise<Professional>{
+    update(booking: Professional): Promise<Professional>{
         return null;
     }
 
