@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { Role } from './role';
 import { RoleService } from './role.service';
 
@@ -13,20 +15,25 @@ export class RoleDetailsComponent implements OnInit {
     private role: Role = new Role();
     private levels: number[];
 
-    constructor(private _roleService: RoleService, private _router: ActivatedRoute) {
-
-    }
+    constructor(private _roleService: RoleService,
+        private _router: ActivatedRoute,
+        private _location: Location) { }
 
     ngOnInit() {
         this._router.params.subscribe((params: Params) => {
             this.role.id = +params['id'];
-        })
+        });
 
         this._roleService.getRoleById(this.role.id)
-            .then((result: Role) => {                
+            .then((result: Role) => {
                 this.role = result;
             });
 
         this.levels = this._roleService.levelsList();
     }
+
+    onBack() {
+        this._location.back();
+    }
+
 }
