@@ -4,4 +4,5 @@ export interface IRole{
     brc: string;
     description: string;
     level: number;
+    deleted: boolean;
 }

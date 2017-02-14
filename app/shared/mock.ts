@@ -148,20 +148,23 @@ export const ROLES: Role[] = [
         name: "Associate Software Engineer",
         brc: "A0022",
         description: "Cargo mais baixo da Avanade",
-        level: 12
+        level: 12,
+        deleted: false
     },
     {
         id: 121,
         name: "Associate Software Engineer",
         brc: "A0022",
         description: "Cargo mais baixo da Avanade",
-        level: 9
+        level: 9,
+        deleted: false
     },
     {
         id: 122,
         name: "Associate Software Engineer",
         brc: "A0022",
         description: "Cargo mais baixo da Avanade",
-        level: 10
+        level: 10,
+        deleted: false
     }
 ];
