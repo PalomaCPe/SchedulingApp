@@ -7,10 +7,7 @@ import { json } from 'body-parser';
 import { bookingRouter } from './service/booking.service';
 import { customerRouter } from './service/customer.service';
 import { roleRouter } from './service/role.service';
-<<<<<<< HEAD
 import { projectRouter } from './service/project.service';
-=======
->>>>>>> a13644baa6a1245ca786ca16298a06a5676b51a4
 import { professionalRouter } from './service/professional.service';
 
 const app: express.Application = express();
@@ -22,12 +19,8 @@ app.use(json());
 app.use('/api/booking/', bookingRouter);
 app.use('/api/customer/', customerRouter);
 app.use('/api/role/', roleRouter);
-<<<<<<< HEAD
 app.use('/api/project/', projectRouter);
 app.use('/api/professional/', professionalRouter);
-=======
-app.use('/api/professional', professionalRouter);
->>>>>>> a13644baa6a1245ca786ca16298a06a5676b51a4
 
 app.get('*', (request: Request, response: Response) => {
     response.sendFile(path.join(__dirname, '../index.html'));
