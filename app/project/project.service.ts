@@ -11,17 +11,20 @@ import { CUSTOMERS } from '../shared/mock';
 
 @Injectable()
 export class ProjectService {  
-    getListProject(): Project[]{
-        return PROJECTS;
+    getListProject(): Promise<Project[]>{
+        return Promise.resolve(PROJECTS);
     }
-    getProjectById(project: Project): Project{
+
+    getProjectById(project: Project){
         return PROJECTS.find(p => p.projectId === project.projectId);
     }
-    getListProfessional(): Professional[]{
-        return PROFESSIONALS;
+   
+    getProfessionalList(): Promise<Professional[]>{
+        return Promise.resolve(PROFESSIONALS);
     } 
-    getListCustomer(): Customer[]{
-        return CUSTOMERS;
+    
+    getCustomers(): Promise<Customer[]>{
+        return Promise.resolve(CUSTOMERS);
     }         
     
 }
