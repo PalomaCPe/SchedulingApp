@@ -14,8 +14,7 @@ app.use(json());
 
 // Route Configuration
 app.use('/api/booking/', bookingRouter);
-app.use('/api/customer/', customerRouter
-);
+app.use('/api/customer/', customerRouter);
 
 app.get('*', (request: Request, response: Response) => {
     response.sendFile(path.join(__dirname, '../index.html'));
