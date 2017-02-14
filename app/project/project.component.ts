@@ -4,7 +4,10 @@ import { Project } from './project';
 import { ProjectService } from './project.service';
 
 import { Professional } from '../professional/professional';
+import { ProfessionalService } from '../professional/professional.service';
+
 import { Customer } from '../customer/customer';
+import { CustomerService } from '../customer/customer.service';
 
 @Component({
   moduleId: module.id,
@@ -13,47 +16,29 @@ import { Customer } from '../customer/customer';
 })
 
 export class ProjectComponent implements OnInit {
-  
-  constructor(private _projectService: ProjectService) {
 
-  }
+  constructor(
+    private _projectService: ProjectService, 
+    private _professionalService: ProfessionalService, 
+    private _customerService: CustomerService
+  ) { }
 
   projects: Project[];
-  selectedProject: Project;
-
   professionals: Professional[];
   customers: Customer[];
-  
+  selectedProject: Project; 
+
   ngOnInit(){
-    this.projects = this._projectService.getListProject();
-    this.customers = this._projectService.getListCustomer();
-    this.professionals = this._projectService.getListProfessional();
+    this._projectService.getProfessionalList().then((p: Professional[]) => {this.professionals = p;});
+    
+    this._projectService.getCustomers().then((c: Customer[]) => { this.customers = c; });
 
-    this.getProjects();
-  }
- 
-  getProjects() {
-    this.projects.forEach((item) => {
-        this.getProfessional(item);
-        this.getCustomer(item);
+    this._projectService.getListProject().then((p: Project[]) => {
+      this.projects = p;
+      this.projects.forEach((obj) => {
+        obj.professional = this.professionals.find(p => p.professionalId === obj.sponsorId);
+        obj.customer = this.customers.find(c => c.id === obj.customerId);
+      });
     });
-  }
-  
-  projectDetails(project: Project) {
-    this.selectedProject = project;
-    this.selectedProject.professional = this.professionals.find(p => p.professionalId == project.sponsorId); 
-    this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
-  }
-
-  getProfessional(project: Project) {
-    project.professional = this.professionals.find(p => p.professionalId == project.sponsorId);    
-  }
-
-  getCustomer(project: Project) {
-    project.customer = this.customers.find(c => c.id == project.customerId);
-  }
-
-  backState(){
-      this.selectedProject = null;
   }
 }  

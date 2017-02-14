@@ -1,28 +1,84 @@
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+
+import 'rxjs/add/operator/toPromise';
 
 import { Project } from './project';
-import { Professional } from './../professional/professional';
-
 import { ProjectService } from './project.service';
-import { ProfessionalService } from './../professional/professional.service';
+
+import { Professional } from '../professional/professional';
+import { ProfessionalService } from '../professional/professional.service';
+
+import { Customer } from '../customer/customer';
+import { CustomerService } from '../customer/customer.service';
 
 @Component({
     moduleId: module.id,
     templateUrl: 'project-details.html'
 })
+
 export class ProjectDetailsComponent implements OnInit {
-
-    private project: Project = new Project();
-    private sponsors: Professional[] = [];
-
-    constructor(private _router: ActivatedRoute, private _projectService: ProjectService, private _professionalService: ProfessionalService) { }
-
+    constructor(
+        private _router: ActivatedRoute, 
+        private _projectService: ProjectService, 
+        private _professionalService: ProfessionalService, 
+        private _customerService: CustomerService
+    ) { }
+    
+    private selectedProject: Project = new Project();
+    private professionals: Professional[] = [];;
+    private customers: Customer[] = [];;
+    
     ngOnInit() {
-        this._router.params.subscribe((params: Params) => this.project.sponsorId = +params['id']);
+        
+        this._router.params.subscribe((params: Params) => this.selectedProject.projectId = +params['id']);
 
-        this.project = this._projectService.getProjectById(this.project);
-        this.sponsors = this._professionalService.getProfessionalList();
+        this.selectedProject = this._projectService.getProjectById(this.selectedProject);
+        
+        /*this._projectService.getProfessionalList().then((p: Professional[]) => { this.professionals = p });
+       
+        this._projectService.getCustomers().then((c: Customer[]) => { this.customers = c });
+        
+        this._projectService.getProjectById(this.id).then((project: Project) => {
+            this.selectedProject = project;
+            this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
+            this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId);
+        });*/
+        
+        /*this._projectService.getProfessionalList()
+            .then((p: Professional[]) => {
+                this.professionals = p;
+                return this._projectService.getCustomers();
+            })
+            .then((c: Customer[]) => {
+                this.customers = c;
+                return this._projectService.getProjectById(this.id);
+            })
+            .then((project: Project) => {
+                this.selectedProject = project;
+
+                this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
+                this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId);
+            });*/
+       
+    }
+   /* projectDetails(project: Project) {
+        this.selectedProject = project;
+        this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId); 
+        this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
     }
 
+    getProfessional(project: Project) {
+        project.professional = this.professionals.find(p => p.professionalId === project.sponsorId);    
+    }
+
+    getCustomer(project: Project) {
+        project.customer = this.customers.find(c => c.id === project.customerId);
+    }
+
+    backState(){
+        this.selectedProject = null;
+    }
+    */
 }
