@@ -30,10 +30,10 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit(){
 
-    this._professionalService.getProfessionalList()
+    this._projectService.getProfessionalList()
       .then((p: Professional[]) => {
           this.professionals = p;
-          return this._customerService.getCustomers();
+          return this._projectService.getCustomers();
       })
       .then((c: Customer[]) => {
           this.customers = c;

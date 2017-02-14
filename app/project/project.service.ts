@@ -13,44 +13,53 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
     const projectUrl = '/api/project';
-    /*const professionalUrl = '/api/professional';
-    const customerUrl = '/api/customer';*/
+    const professionalUrl = '/api/professional';
+    const customerUrl = '/api/customer';
 
 @Injectable()
 export class ProjectService {  
 
     constructor(private _http: Http) { }
 
-    getListProject(): Promise<Project[]>{
+    getListProject(): Promise<Project[]> {
         let url: string = `${projectUrl}/list`;
+        
         return this._http.get(url)
             .toPromise()
-            .then(response => response.json().data as Project[])
+            .then((response: Response) => {
+
+                return response.json() as Project[];
+            })
             .catch(this.handleError);
     }
-
-    getProjectById(id: number): Promise<Project>{
+    getProjectById(id: number): Promise<Project> {
         let url: string = `${projectUrl}/${id}`;
+        
         return this._http.get(url)
             .toPromise()
-            .then(response => response.json().data as Project)
+            .then((response: Response) => {
+
+                return response.json() as Project;
+            })
             .catch(this.handleError);
     }
    
-   /* getProfessionalList(): Promise<Professional[]>{
-        return this._http.get(this.professionalUrl)
+   getProfessionalList(): Promise<Professional[]>{
+       let url: string = `${professionalUrl}/list`;
+        return this._http.get(url)
             .toPromise()
             .then(response => response.json().data as Professional[])
             .catch(this.handleError);
     } 
     
     getCustomers(): Promise<Customer[]>{
-        return this._http.get(this.customerUrl)
+        let url: string = `${customerUrl}/list`;
+        return this._http.get(url)
             .toPromise()
             .then(response => response.json().data as Customer[])
             .catch(this.handleError);
     }
-    */
+    
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);

@@ -36,10 +36,10 @@ export class ProjectDetailsComponent implements OnInit {
         
         this._router.params.subscribe((params: Params) => this.id = +params['id']);
 
-        this._professionalService.getProfessionalList()
+        this._projectService.getProfessionalList()
             .then((professionals: Professional[]) => {
                 this.professionals = professionals;
-                return this._customerService.getCustomers();
+                return this._projectService.getCustomers();
             })
             .then((customers: Customer[]) => {
                 this.customers = customers;
