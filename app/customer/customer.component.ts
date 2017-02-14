@@ -21,13 +21,13 @@ export class CustomerComponent implements OnInit {
     private sponsors: Professional[];
 
     ngOnInit() {
-        this._customerService.getCustomers().then((customerList: Customer[]) => this.customers = customerList).catch((error: Error) => { throw error });
         this._professionalService.getProfessionalList().then((sponsorsList: Professional[]) => this.sponsors = sponsorsList).catch((error: Error) => { throw error });
+        this._customerService.getCustomers().then((customerList: Customer[]) => this.customers = customerList).catch((error: Error) => { throw error });
     }
 
     deleteCustomer(customer: Customer) {
         this._customerService.deleteCustomer(customer)
-            .then((deleted: boolean) => console.log(deleted))
+            .then((deleted: boolean) => deleted)
             .catch((error: Error) => { throw error })
     }
 
