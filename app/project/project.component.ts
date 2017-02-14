@@ -33,7 +33,7 @@ export class ProjectComponent implements OnInit {
     this._professionalService.getProfessionalList()
       .then((p: Professional[]) => {
           this.professionals = p;
-          return this._projectService.getCustomers();
+          return this._customerService.getCustomers();
       })
       .then((c: Customer[]) => {
           this.customers = c;

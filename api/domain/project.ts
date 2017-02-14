@@ -15,6 +15,8 @@ export class Project {
     customer: Customer;
     professional: Professional;
 
+    deleted:boolean;
+
     constructor(id?: number) {
         this.projectId = id || null;
     }
