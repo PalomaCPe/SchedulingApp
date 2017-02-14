@@ -13,7 +13,8 @@ export const BOOKINGS: Booking[] = [
         projectId: 1,
         professionalId: 2,
         project: null,
-        professional: null
+        professional: null,
+        deleted: false
     },
     {
         id: 2,
@@ -23,7 +24,8 @@ export const BOOKINGS: Booking[] = [
         projectId: 2,
         professionalId: 3,
         project: null,
-        professional: null
+        professional: null,
+        deleted: false
     }
 ];
 

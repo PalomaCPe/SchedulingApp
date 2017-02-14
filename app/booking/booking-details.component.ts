@@ -20,7 +20,7 @@ export class BookingDetailComponent implements OnInit {
         private _professionalService: ProfessionalService,
         private _projectService: ProjectService,
         private _router: ActivatedRoute,
-        private _location: Location,) { }
+        private _location: Location) { }
 
     booking: Booking;
     professionals: Professional[];
