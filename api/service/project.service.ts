@@ -16,17 +16,13 @@ projectRouter.get('/list', (request: Request, response: Response) => {
 projectRouter.get('/:id', (request: Request, response: Response) => {
     let projectApplication: ProjectApplication = new ProjectApplication();
 
-    let id: number = +request.params.id;
-
-    projectApplication.getProject(id).then((result: Project) => {
+    projectApplication.getProject(+request.params.id).then((result: Project) => {
         response.json(result);
     });
 });
 
 projectRouter.post('/post', (request: Request, response: Response) => {
     let projectApplication: ProjectApplication = new ProjectApplication();
-
-    let id: number = +request.params.id;
 
     projectApplication.getProjects().then((result: Project[]) => {
         response.json(result);
@@ -35,18 +31,14 @@ projectRouter.post('/post', (request: Request, response: Response) => {
 projectRouter.put('/:id', (request: Request, response: Response) => {
     let projectApplication: ProjectApplication = new ProjectApplication();
 
-    let id: number = +request.params.id;
-
-    projectApplication.updateProject(id).then((result: Project) => {
+    projectApplication.updateProject(+request.params.id).then((result: Project) => {
         response.json(result);
     });
 });
 projectRouter.delete('/:id', (request: Request, response: Response) => {
     let projectApplication: ProjectApplication = new ProjectApplication();
 
-    let id: number = +request.params.id;
-
-    projectApplication.deleteProject(id).then((result: Project) => {
+    projectApplication.deleteProject(+request.params.id).then((result: Project) => {
         response.json(result);
     });
 });

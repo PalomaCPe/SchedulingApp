@@ -23,47 +23,37 @@ export class ProjectDetailsComponent implements OnInit {
         private _router: ActivatedRoute, 
         private _projectService: ProjectService, 
         private _professionalService: ProfessionalService, 
-        private _customerService: CustomerService
+        private _customerService: CustomerService,
+        private _location: Location
     ) { }
     
     private selectedProject: Project = new Project();
     private professionals: Professional[] = [];;
     private customers: Customer[] = [];;
+    id: number;
     
     ngOnInit() {
         
-        this._router.params.subscribe((params: Params) => this.selectedProject.projectId = +params['id']);
+        this._router.params.subscribe((params: Params) => this.id = +params['id']);
 
-        this.selectedProject = this._projectService.getProjectById(this.selectedProject);
-        
-        /*this._projectService.getProfessionalList().then((p: Professional[]) => { this.professionals = p });
-       
-        this._projectService.getCustomers().then((c: Customer[]) => { this.customers = c });
-        
-        this._projectService.getProjectById(this.id).then((project: Project) => {
-            this.selectedProject = project;
-            this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
-            this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId);
-        });*/
-        
-        /*this._projectService.getProfessionalList()
-            .then((p: Professional[]) => {
-                this.professionals = p;
+        this._professionalService.getProfessionalList()
+            .then((professionals: Professional[]) => {
+                this.professionals = professionals;
                 return this._projectService.getCustomers();
             })
-            .then((c: Customer[]) => {
-                this.customers = c;
-                return this._projectService.getProjectById(this.id);
+            .then((customers: Customer[]) => {
+                this.customers = customers;
+                return this._projectService.getProjectById(this.id)
             })
             .then((project: Project) => {
                 this.selectedProject = project;
 
                 this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
                 this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId);
-            });*/
-       
+            });
+
     }
-   /* projectDetails(project: Project) {
+   projectDetails(project: Project) {
         this.selectedProject = project;
         this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId); 
         this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
@@ -76,9 +66,9 @@ export class ProjectDetailsComponent implements OnInit {
     getCustomer(project: Project) {
         project.customer = this.customers.find(c => c.id === project.customerId);
     }
-
     backState(){
+        this._location.back();
         this.selectedProject = null;
     }
-    */
+    
 }
