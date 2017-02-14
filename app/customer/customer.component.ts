@@ -10,7 +10,7 @@ import { ProfessionalService } from './../professional/professional.service';
     moduleId: module.id,
     selector: 'ava-cus-app',
     templateUrl: 'customer.html',
-    styles: ['tbody > tr > td > span { cursor:pointer }']
+    styles: ['tbody > tr > td > span { cursor:pointer }', 'table{text-align:center}']
 })
 
 export class CustomerComponent implements OnInit {
