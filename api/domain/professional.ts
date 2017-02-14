@@ -8,7 +8,8 @@ export class Professional {
     roleId: number;
     email: string;
     phone: string;
-
+    //delete logico
+    deleted: boolean;
     //relacionamentos
     role: Role;
 }

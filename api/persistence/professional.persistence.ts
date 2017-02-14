@@ -10,7 +10,7 @@ export class ProfessionalPersistence implements ICrud<Professional> {
     }
 
     read(id: number): Promise<Professional>{
-        return null;
+        return Promise.resolve(PROFESSIONALS.find(p => id == p.professionalId));
     }
 
     create(booking: Professional): Promise<Professional>{
