@@ -35,21 +35,24 @@ export const CUSTOMERS: Customer[] = [
         name: "customer 1",
         contact: "11 5555-1111",
         email: "customer1@avanade.com",
-        sponsor: 2
+        sponsor: 2,
+        deleted: false
     },
     {
         id: 2,
         name: "customer 2",
         contact: "11 5555-2222",
         email: "customer2@avanade.com",
-        sponsor: 3
+        sponsor: 3,
+        deleted: false
     },
     {
         id: 3,
         name: "customer 3",
         contact: "11 5555-3333",
         email: "custome31@avanade.com",
-        sponsor: 1
+        sponsor: 1,
+        deleted: false
     }
 ];
 
