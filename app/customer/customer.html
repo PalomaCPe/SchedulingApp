@@ -12,7 +12,7 @@
                 <td>Remover</td>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="sponsors">
             <tr *ngFor="let customer of customers">
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.name}}</td>

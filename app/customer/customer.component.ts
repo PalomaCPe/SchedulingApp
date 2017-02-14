@@ -32,7 +32,6 @@ export class CustomerComponent implements OnInit {
     }
 
     getSponsorName(customer: Customer): string {
-        console.log(this.sponsors);
-        return this.sponsors.find(s => s.professionalId === customer.sponsor).name;
+        return this.sponsors.find(s => s.professionalId === customer.sponsor).name
     }
 }
