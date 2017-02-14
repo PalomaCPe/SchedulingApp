@@ -3,23 +3,21 @@ import { ProjectPersistence } from '../persistence/project.persistence';
 
 export class ProjectApplication{
     getProjects(): Promise<Project[]>{
-        let projectPersistence: ProjectPersistence = new ProjectPersistence();
-
-        return projectPersistence.list();
+        return new ProjectPersistence().list();
     }
     
     /************************/
-
+    
     getProject(id: number): Promise<Project> {
-            
-            return null;
+        return new ProjectPersistence().read(id);
+    }
+    createProject(project: Project): Promise<Project> {
+        return Promise.resolve(project);
     }
     updateProject(id: number): Promise<Project> {
-
-            return null;
+        return Promise.resolve(new Project(id));
     }
     deleteProject(id: number): Promise<Project> {
-
-            return null;
+        return new ProjectPersistence().read(id);
     }
 }

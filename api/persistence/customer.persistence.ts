@@ -5,7 +5,7 @@ import { CUSTOMERS } from '../../app/shared/mock';
 
 export class CustomerPersistence implements ICrud<Customer> {
     list(): Promise<Customer[]> {
-        return Promise.resolve(CUSTOMERS);
+        return Promise.resolve(CUSTOMERS.filter(customer => customer.deleted === false));
     }
 
     read(id: number): Promise<Customer> {
