@@ -11,7 +11,7 @@ export class ProjectApplication{
     /************************/
 
     getProject(id: number): Promise<Project> {
-
+            
             return null;
     }
     updateProject(id: number): Promise<Project> {
