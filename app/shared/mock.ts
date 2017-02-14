@@ -109,7 +109,8 @@ export const PROJECTS: Project[] = [
         wbs: "WBSTESTE",
         sponsorId: 1,
         professional:null,
-        customer:null
+        customer:null,
+        deleted: false
     },
     {
         projectId: 2,
@@ -120,7 +121,8 @@ export const PROJECTS: Project[] = [
         wbs: "WBSTESTE",
         sponsorId: 1,
         professional:null,
-        customer:null
+        customer:null,
+        deleted: false
     },
     {
         projectId: 3,
@@ -131,7 +133,8 @@ export const PROJECTS: Project[] = [
         wbs: "WBSTESTE",
         sponsorId: 1,
         professional:null,
-        customer:null
+        customer:null,
+        deleted: false
     }
 ];
 
