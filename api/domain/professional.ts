@@ -1,4 +1,4 @@
-import { Role } from './role'
+import { Role } from './Role'
 
 export class Professional {
     professionalId: number;
