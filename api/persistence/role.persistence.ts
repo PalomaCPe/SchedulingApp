@@ -4,6 +4,7 @@ import { ICrud } from './crud.interface';
 import { ROLES } from '../../app/shared/mock';
 
 export class RolePersistence implements ICrud<Role>{
+
     list(): Promise<Role[]>{
         return Promise.resolve(ROLES);
     }

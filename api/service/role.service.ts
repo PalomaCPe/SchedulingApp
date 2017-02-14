@@ -11,6 +11,7 @@ roleRouter.get('/list', (request: Request, response: Response) => {
         .then((result: Role[]) => {
             response.json(result);
         });
+
 });
 
 roleRouter.get('/id', (request: Request, response: Response) => {
