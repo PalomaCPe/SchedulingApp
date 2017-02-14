@@ -9,7 +9,7 @@ export class BookingPersistence implements ICrud<Booking> {
     }
 
     read(id: number): Promise<Booking>{
-        return null;
+        return Promise.resolve(BOOKINGS.find(b => b.id === id));;
     }
 
     create(booking: Booking): Promise<Booking>{

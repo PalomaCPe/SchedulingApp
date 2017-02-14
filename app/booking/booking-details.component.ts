@@ -11,8 +11,6 @@ import { ProfessionalService } from '../professional/professional.service';
 import { Project } from '../project/project';
 import { ProjectService } from '../project/project.service';
 
-import 'rxjs/add/operator/toPromise';
-
 @Component({
     moduleId: module.id,
     templateUrl: 'booking-details.html'
@@ -21,7 +19,8 @@ export class BookingDetailComponent implements OnInit {
     constructor(private _bookingService: BookingService,
         private _professionalService: ProfessionalService,
         private _projectService: ProjectService,
-        private _router: ActivatedRoute) { }
+        private _router: ActivatedRoute,
+        private _location: Location,) { }
 
     booking: Booking;
     professionals: Professional[];
@@ -75,5 +74,6 @@ export class BookingDetailComponent implements OnInit {
     }
 
     onBack() {
+        this._location.back();
     }
 }
