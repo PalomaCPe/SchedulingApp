@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 
 import { Role } from './role';
 
-import { ROLES } from '../shared/mock';
+// import { ROLES } from '../shared/mock';
 
 const SERVICE_URL: string = 'api/role';
 
@@ -28,11 +28,18 @@ export class RoleService {
         return [6, 7, 8, 9, 10, 11, 12];
     }
 
-    getRoleById(role: Role) {
-        return ROLES.find(r => r.id === role.id);
+    getRoleById(id: Number): Promise<Role> {
+        let url: string = `${SERVICE_URL}/${id}`;
+
+        return this._httpService.get(url)
+            .toPromise()
+            .then((response: Response) => {
+                return response.json() as Role;
+            })
+            .catch(this.errorHandling);
     }
 
     errorHandling(error: any) {
-        console.log(error)
+        console.log(error.message || error);
     }
 }
