@@ -18,7 +18,7 @@ roleRouter.get('/id', (request: Request, response: Response) => {
     let roleApplication: RoleApplication = new RoleApplication();
     let id: number =+ request.params.id;
 
-    roleApplication.getRoles(id)
+    roleApplication.getRole(id)
     .then ((role : Role) =>{
         response.json(role)
     })
