@@ -8,6 +8,8 @@ export class Booking {
     percentual: number;
     projectId: number;
     professionalId: number;
+    //delete lógico
+    deleted: boolean;
     //Propriedades de navegação
     project: Project;
     professional: Professional;
