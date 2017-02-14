@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http"
+import { Http, Response } from "@angular/http";
 
 import { Professional } from './professional';
 import { PROFESSIONALS } from '../shared/mock';
 
-import { Role } from '../role/role'
+import { Role } from '../role/role';
 
 const SERVICE_URL: string = "/api/professional";
 
@@ -16,7 +16,7 @@ export class ProfessionalService{
 
     getProfessionalList(): Promise <Professional[]>{
         
-        let url: string = '${SERVICE_URL}/list';
+        let url: string = `${SERVICE_URL}/list`;
 
         return this._httpService.get(url)
         .toPromise()
@@ -26,9 +26,9 @@ export class ProfessionalService{
         .catch(this.errorHandling);
     }
 
-    getProfessional(): Promise<Professional> {
+    getProfessional(id: number): Promise<Professional> {
         
-        let url: string = '${SERVICE_URL}/:id'; 
+        let url: string = `${SERVICE_URL}/${id}`; 
 
         return this._httpService.get(url)
         .toPromise()
