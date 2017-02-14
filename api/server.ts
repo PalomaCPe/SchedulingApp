@@ -18,7 +18,6 @@ app.use('/api/booking/', bookingRouter);
 app.use('/api/customer/', customerRouter);
 app.use('/api/role/', roleRouter);
 
-
 app.get('*', (request: Request, response: Response) => {
     response.sendFile(path.join(__dirname, '../index.html'));
 });
