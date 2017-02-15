@@ -1,4 +1,5 @@
-<ava-hdr-app [pageName]="'Projetos'"[icon]="'glyphicon-folder-open'"></ava-hdr-app>
+<ava-hdr-app [pageName]="'Projetos'" [icon]="'glyphicon-folder-open'"></ava-hdr-app>
+
 <div class="page-content">
     <table class="table table-borded table-striped table-hover table-responsive">
         <thead>
@@ -12,17 +13,19 @@
                 <th>Detalhes</th>
             </tr>
         </thead>
+       
         <tbody>
             <tr *ngFor="let project of projects">
                 <td>{{project.name}}</td>
-                <td>{{project.customerId}}</td>
+                <td>{{project.customer.name}}</td>
                 <td>{{project.dtInitial | date: "dd/MM/yyyy"}}</td>
                 <td>{{project.dtFinal | date: "dd/MM/yyyy"}}</td>
                 <td>{{project.wbs}}</td>
-                <td>{{project.sponsorId}}</td>
-                <td><span class="glyphicon glyphicon-folder-open" [routerLink]=" '/projects/details/' + project.id"></span></td>
+                <td>{{project.professional.name}}</td>
+                <td class="text-center" title="Detalhes">
+                    <span class="glyphicon glyphicon-folder-open" [routerLink]="['/projects', 'details', project.projectId]"></span>
+                </td>                                                          
             </tr>
         </tbody>
     </table>
-</div>
- 
+</div> 

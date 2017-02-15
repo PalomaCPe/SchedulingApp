@@ -1,62 +1,68 @@
-    <form #form="ngForm">
-        <fieldset>
-            <div class="row">
-                <div class="col-md-6">
+<ava-hdr-app [pageName]="'Projetos'" [icon]="'glyphicon-folder-open'"></ava-hdr-app>
+    <div class="page-content">
+        <form name="projectForm" ng-if="selectedProject">
+            <fieldset>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input [(ngModel)]="selectedProject.name" class="form-control" type="text" name="name" placeholder="Nome">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Nome</label>
-                        <input [(ngModel)]="selectedProject.name" class="form-control" type="text" name="name" placeholder="Nome">
+                            <label for="customer">Cliente</label>
+                            <select class="form-control" [(ngModel)]="selectedProject.customerId" name="customer" required>
+                        <option *ngFor='let customer of customers' 
+                        [selected]="selectedProject.customerId == customer.id"
+                        [value]="selectedProject.customerId">{{ customer.name }}</option>
+                </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                        <label for="">Cliente</label>
-                        <input  [(ngModel)]="selectedProject.customerId" class="form-control" type="text" name="customerId" placeholder="Cliente">
-                        <select class="form-control" [(ngModel)]="selectedProject.customerId" name="customerId" required>
-                    <option *ngFor='let customer of customers' 
-                    [selected]="selectedProject.id == customer.id"
-                    [value]="customer.id">{{ customer.name }}</option>
-            </select>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Data inicio</label>
+                            <input #dtInitialInput id="dtInitial" value="{{ selectedProject.dtInitial | date:'yyyy-MM-dd' }}" name="dtInitial" placeholder="Data Inicial"
+                        required class="form-control" type="date" (input)="dtInitialChanged(dtInitialInput.value)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Data inicio</label>
-                        <input #dtInitialInput id="dtInitial" value="{{ selectedProject.dtInitial | date:'yyyy-MM-dd' }}" name="dtInitial" placeholder="Data Inicial"
-                    required class="form-control" type="date" (input)="dtInitialChanged(dtInitialInput.value)">
+                            <label for="">Data fim</label>
+                            <input #dtFinalInput id="dtFinal" value="{{ selectedProject.dtFinal | date:'yyyy-MM-dd' }}" name="dtFinal" placeholder="Data Final"
+                        required class="form-control" type="date" (input)="dtDinalChanged(dtFinalInput.value)">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                        <label for="">Data fim</label>
-                        <input #dtFinalInput id="dtFinal" value="{{ selectedProject.dtFinal | date:'yyyy-MM-dd' }}" name="dtFinal" placeholder="Data Final"
-                    required class="form-control" type="date" (input)="dtDinalChanged(dtFinalInput.value)">
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">WBS</label>
+                            <input [(ngModel)]="selectedProject.wbs"  class="form-control" type="text" name="wbs" placeholder="WBS">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">WBS</label>
-                        <input class="form-control" type="text" name="wbs" placeholder="WBS">
+                            <label for="sponsor">Profissional</label>
+                            <select class="form-control" name="sponsor" required [(ngModel)]="selectedProject.sponsorId">
+                            <option [value]="selectedProject.sponsorId" *ngFor="let professional of professionals">{{professional.name}}</option>
+                        </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                <div class="form-group">
-                        <label for="">Profissional</label>
-                         <select class="form-control" name="sponsorId" required [(ngModel)]="project.sponsorId">
-                        <option [value]="sponsorId.professionalId" *ngFor="let professional of professionals">{{professional.name}}</option>
-                    </select>
-                    </div>
+                    <div class="form-group">
+                <div class="col-sm-10">
+                    <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onCreate()">Novo</button>
+                    <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onEdit()">Alterar</button>                
+                    <button *ngIf="action === 'edit'" type="button" class="btn btn-primary btn-outline">Salvar</button>
+                    <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" >Excluir</button>
+                    <button type="button" class="btn btn-default" (click)="backState()">Voltar</button>
                 </div>
             </div>
-        </fieldset>
-        <div class="row">
-        <div class="col-md-12">
-        <button class="btn btn-primary" [routerLink]="'/projects'"> <span class="glyphicon glyphicon-chevron-left"></span>Lista de Projetos</button>
-        </div>
-        </div>
-    </form>
+                </div>
+            </fieldset>
+        </form>
+    </div>

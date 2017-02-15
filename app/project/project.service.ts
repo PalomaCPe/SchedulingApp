@@ -13,8 +13,6 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
     const projectUrl = '/api/project';
-    const professionalUrl = '/api/professional';
-    const customerUrl = '/api/customer';
 
 @Injectable()
 export class ProjectService {  
@@ -41,22 +39,6 @@ export class ProjectService {
 
                 return response.json() as Project;
             })
-            .catch(this.handleError);
-    }
-   
-   getProfessionalList(): Promise<Professional[]>{
-       let url: string = `${professionalUrl}/list`;
-        return this._http.get(url)
-            .toPromise()
-            .then(response => response.json().data as Professional[])
-            .catch(this.handleError);
-    } 
-    
-    getCustomers(): Promise<Customer[]>{
-        let url: string = `${customerUrl}/list`;
-        return this._http.get(url)
-            .toPromise()
-            .then(response => response.json().data as Customer[])
             .catch(this.handleError);
     }
     

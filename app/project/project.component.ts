@@ -3,49 +3,46 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from './project';
 import { ProjectService } from './project.service';
 
-import { Professional } from '../professional/professional';
-import { ProfessionalService } from '../professional/professional.service';
-
 import { Customer } from '../customer/customer';
 import { CustomerService } from '../customer/customer.service';
 
+import { Professional } from '../professional/professional';
+import { ProfessionalService } from '../professional/professional.service';
+
+import 'rxjs/add/operator/toPromise';
+
 @Component({
-  moduleId: module.id,
-  selector: 'ava-pro-app',
-  templateUrl: 'project.html',
+    moduleId: module.id,
+    selector: 'ava-pro-app',
+    templateUrl: 'project.html'
 })
 
 export class ProjectComponent implements OnInit {
+    constructor(private _projectService: ProjectService,
+        private _professionalService: ProfessionalService,
+        private _customerService: CustomerService) { }
 
-  constructor(
-    private _projectService: ProjectService, 
-    private _professionalService: ProfessionalService, 
-    private _customerService: CustomerService
-  ) { }
+    projects: Project[];
+    customers: Customer[];
+    professionals: Professional[];
 
-  projects: Project[];
-  professionals: Professional[];
-  customers: Customer[];
-  selectedProject: Project; 
+    ngOnInit() {
+        this._customerService.getCustomers()
+            .then((customers: Customer[]) => {
+                this.customers = customers;
+                return this._professionalService.getProfessionalList();
+            })
+            .then((professionals: Professional[]) => {
+                this.professionals = professionals;
+                return this._projectService.getListProject();
+            })
+            .then((projects: Project[]) => {
+                this.projects = projects;
 
-  ngOnInit(){
-
-    this._projectService.getProfessionalList()
-      .then((p: Professional[]) => {
-          this.professionals = p;
-          return this._projectService.getCustomers();
-      })
-      .then((c: Customer[]) => {
-          this.customers = c;
-          return this._projectService.getListProject();
-      })
-      .then((p: Project[]) => {
-          this.projects = p;
-          this.projects.forEach((obj) => {
-            obj.professional = this.professionals.find(p => p.professionalId === obj.sponsorId);
-            obj.customer = this.customers.find(c => c.id === obj.customerId);
-          });
-      });
-
-  }
-}  
+                this.projects.forEach((obj) => {
+                    obj.customer = this.customers.find(p => p.id === obj.customerId);
+                    obj.professional = this.professionals.find(p => p.professionalId === obj.sponsorId);
+                });
+            });
+    }
+}
