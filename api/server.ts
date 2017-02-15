@@ -30,4 +30,7 @@ app.get('*', (request: Request, response: Response) => {
 const server: http.Server = http.createServer(app);
 server.listen(3000);
 
+//mongo config
+const mongoUrl: String = "mongodb://localhost:27017/schedulingApp";
+
 export { app }

@@ -1,5 +1,5 @@
-<div class="page-content" *ngIf="professionals">
-    <form name="professionalForm">
+<div class="page-content">
+    <form name="professionalForm" *ngIf="professional">
         <div class="row">
             <div class="col-md-6">
                 <label for="">PID</label>
@@ -33,6 +33,10 @@
             </div>
         </div>
         <!-- Button Submit -->
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary btn-outline">Novo</button>
+        <button type="submit" class="btn btn-primary btn-outline">Alterar</button>
+        <button type="submit" class="btn btn-primary btn-outline">Salvar</button>
+        <button type="submit" class="btn btn-primary btn-outline">Excluir</button>
+        <button type="submit" class="btn btn-default" (click)="onBack()">Voltar</button>
     </form>
 </div>

@@ -13,7 +13,7 @@ import { ProfessionalService } from './professional.service';
 @NgModule({
     imports: [BrowserModule, FormsModule, SharedModule, RouterModule.forRoot([
         {path:'professionals', component: ProfessionalComponent},
-        {path:'professional/details/:id', component: ProfessionalDetailComponent}
+        {path:'professional/:action/:id', component: ProfessionalDetailComponent}
     ])],
     declarations: [ProfessionalComponent, EmailHider, ProfessionalDetailComponent],
     providers: [ProfessionalService]
