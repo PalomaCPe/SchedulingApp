@@ -27,15 +27,15 @@ export class CustomerPersistence implements ICrud<Customer> {
 
     create(customer: Customer): Promise<Customer> {
         return Promise.resolve(Connection.conn().then((db: Db) => {
-            db.collection('customer').insert(JSON.stringify(customer));
+            db.collection('customer').insert(customer);
             db.close();
             return customer;
         }));
     }
 
     update(customer: Customer): Promise<Customer> {
-         return Promise.resolve(Connection.conn().then((db: Db) => {
-            db.collection('customer').update({ id: customer.id }, JSON.stringify(customer));
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            db.collection('customer').update({ id: customer.id }, customer);
             db.close();
             return customer;
         }));
@@ -43,7 +43,7 @@ export class CustomerPersistence implements ICrud<Customer> {
 
     delete(id: number): Promise<boolean> {
         return Promise.resolve(Connection.conn().then((db: Db) => {
-            db.collection('customer').remove({ id: id, deleted: false });
+            db.collection('customer').update({ id: id }, { deleted: true });
             db.close();
             return Promise.resolve(id ? true : false);
         }));

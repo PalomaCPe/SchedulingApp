@@ -40,11 +40,33 @@ export class ProfessionalService{
     }
 
     saveProfessional(professional: Professional): Promise<Professional>{
-        return null 
+        let url: string = `${SERVICE_URL}/post`;
+        return this._httpService.post(url, {professional: professional})
+        .toPromise()
+        .then((response: Response) => {
+            return response.json() as Professional;
+        })
+        .catch(this.errorHandling); 
     }
 
-    editProfessional(){
+    editProfessional(professional: Professional): Promise<Professional>{
+        let url: string = `${SERVICE_URL}/put`;
+        return this._httpService.put(url, {professional: professional})
+        .toPromise()
+        .then((response: Response) => {
+            return response.json() as Professional;
+        })
+        .catch(this.errorHandling);
+    }
 
+    deleteProfessional(id:number): Promise<boolean> {
+        let url: string = `${SERVICE_URL}/delete`;
+        return this._httpService.delete(url)
+        .toPromise()
+        .then((response: Response) => {
+            return true;
+        })
+        .catch(this.errorHandling);
     }
 
     errorHandling(error: any) {

@@ -1,5 +1,5 @@
-<form #form="ngForm">
-    <fieldset>
+<form #form="ngForm" *ngIf="customer">
+    <fieldset [disabled]="action === 'details'">
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
@@ -35,7 +35,13 @@
     </fieldset>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary" (click)="goBack()"> <span class="glyphicon glyphicon-chevron-left"></span>Lista de Clientes</button>
+            <div class="form-group">
+                <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onCreate()">Novo</button>
+                <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onEdit()">Alterar</button>
+                <button *ngIf="action === 'edit' || action === 'new' " type="button" class="btn btn-primary btn-outline" (click)="save()">Salvar</button>
+                <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="delete()">Excluir</button>
+                <button type="button" class="btn btn-default" (click)="goBack()">Voltar</button>
+            </div>
         </div>
     </div>
 </form>

@@ -9,7 +9,6 @@
                 <th>E-mail</th>
                 <th>Responsavel</th>
                 <th>Detalhes</th>
-                <th>Remover</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +18,7 @@
                 <td>{{ customer.contact }}</td>
                 <td>{{ customer.email }}</td>
                 <td>{{ getSponsorName(customer) }}</td>
-                <td><span class="glyphicon glyphicon-folder-open" [routerLink]=" '/customers/details/' + customer.id"></span></td>
-                <td><span class="glyphicon glyphicon-trash" (click)="deleteCustomer(customer)"></span></td>
+                <td><span class="glyphicon glyphicon-folder-open" [routerLink]="['/customers', 'details', customer.id]"></span></td>
             </tr>
         </tbody>
     </table>

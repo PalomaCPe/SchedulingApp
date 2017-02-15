@@ -33,7 +33,7 @@ professionalRouter.post('/post', (request: Request, response: Response) => {
     });
 });
 
-professionalRouter.put('/id', (request: Request, response: Response) => {
+professionalRouter.put('/:id', (request: Request, response: Response) => {
     let professionalApplication: ProfessionalApplication = new ProfessionalApplication();
 
     professionalApplication.saveProfessional(request.body.professional)

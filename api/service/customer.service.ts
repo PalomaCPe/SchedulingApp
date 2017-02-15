@@ -5,7 +5,12 @@ import { CustomerApplication } from '../application/customer.application';
 export const customerRouter: Router = Router();
 
 customerRouter.route('/post')
-    .post((request: Request, response: Response) => { });
+    .post((request: Request, response: Response) => {
+        new CustomerApplication().createCustomer(request.body)
+            .then((result: Customer) => {
+                response.json(result);
+            });
+    });
 
 
 customerRouter.route('/list')
@@ -24,10 +29,12 @@ customerRouter.route('/:id')
             });
     })
     .put((request: Request, response: Response) => {
-        new CustomerApplication().updateCustomer(+request.params.id)
+        new CustomerApplication().updateCustomer(request.body)
             .then((result: Customer) => {
                 response.json(result);
             });
+
+
     })
     .delete((request: Request, response: Response) => {
         new CustomerApplication().deleteCustomer(+request.params.id)
