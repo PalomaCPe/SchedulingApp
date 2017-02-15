@@ -30,23 +30,31 @@ export class ProfessionalDetailComponent {
     ngOnInit() {
         this._router.params.subscribe((params: Params) => {
             this.id = +params['id'];
-            this.action = params['action'];
-            console.log(this.action);    
+            this.action = params['action'];   
         })
 
         this._professionalService.getProfessional(this.id)
         .then((getProfessional: Professional) => {
             this.professional = getProfessional;
-            return this._roleService.getRoleList();
-        })
-        .then((getRoles:Role[]) => {
-            this.roles = getRoles;
-            this.getProfessionalRole(this.professional);
-        });               
+            console.log(this.professional);
+            return getProfessional;
+        });              
     }
 
     getProfessionalRole(professional: Professional) {
         professional.role = this.roles.find(r => professional.roleId == r.id);
+    }
+
+    onCreate() {
+        this.action = 'edit';
+    }
+
+    onSave() {
+        
+    }
+
+    onDelete() {
+    
     }
 
     onBack() {

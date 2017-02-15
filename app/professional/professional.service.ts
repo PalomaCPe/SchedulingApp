@@ -39,6 +39,14 @@ export class ProfessionalService{
 
     }
 
+    saveProfessional(professional: Professional): Promise<Professional>{
+        return null 
+    }
+
+    editProfessional(){
+
+    }
+
     errorHandling(error: any) {
         console.log(error.message || error);
     }
