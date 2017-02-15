@@ -8,9 +8,6 @@ import { BOOKINGS } from '../../app/shared/mock';
 
 export class CustomerPersistence implements ICrud<Customer> {
 
-    private database: Db;
-    private customerCollection: Collection;
-
     list(): Promise<Customer[]> {
         return Promise.resolve(Connection.conn().then((db: Db) => {
             let customerList = db.collection('customer').find({ deleted: false }).toArray() as Promise<Customer[]>;
