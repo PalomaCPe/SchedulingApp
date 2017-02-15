@@ -14,7 +14,7 @@ import { ProfessionalService } from './../professional/professional.service';
     imports: [BrowserModule, FormsModule, SharedModule,
         RouterModule.forRoot([
             { path: 'customers', component: CustomerComponent },
-            { path: 'customers/details/:id', component: CustomerDetailsComponent },
+            { path: 'customers/:action/:id', component: CustomerDetailsComponent }
         ])],
     declarations: [CustomerComponent, CustomerDetailsComponent],
     providers: [CustomerService, ProfessionalService]

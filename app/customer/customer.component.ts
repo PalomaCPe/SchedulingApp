@@ -25,12 +25,6 @@ export class CustomerComponent implements OnInit {
         this._customerService.getCustomers().then((customerList: Customer[]) => this.customers = customerList).catch((error: Error) => { throw error });
     }
 
-    deleteCustomer(customer: Customer) {
-        this._customerService.deleteCustomer(customer)
-            .then((deleted: boolean) => deleted)
-            .catch((error: Error) => { throw error })
-    }
-
     getSponsorName(customer: Customer): string {
         return this.sponsors.find(s => s.professionalId === customer.sponsor).name
     }
