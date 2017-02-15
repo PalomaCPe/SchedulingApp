@@ -1,4 +1,4 @@
-import { MongoClient, Db, FindAndModifyWriteOpResultObject } from 'mongodb';
+import { MongoClient, Db, FindAndModifyWriteOpResultObject, InsertOneWriteOpResult } from 'mongodb';
 import { ICrud } from './crud.interface';
 import { Professional } from '../domain/professional';
 import { Connection } from './connection';
@@ -37,17 +37,37 @@ export class ProfessionalPersistence implements ICrud<Professional> {
 
     create(professional: Professional): Promise<Professional>{
         let database: Db;
-        return Promise.resolve(
-            Connection.conn()
-            .then((db:Db) => {
-                database = db;
-                return db.collection('professional').insert(professional);
+        let sequence: number;
+
+        return Promise.resolve<Professional>(
+            Connection.getNextSequence('professionalId')
+            .then((retrieveSequence: number) => {
+                sequence = retrieveSequence;
+                return Connection.conn();
             })
-            .then((professional: any) => {
-                database.close();
-                return professional
+            .then((db: Db) => {
+                return db.collection('professional').insertOne({
+                        professionalId: sequence,
+                        pid: professional.pid,
+                        eid: professional.eid,
+                        name: professional.name,
+                        roleId: +professional.roleId,
+                        email: professional.email,
+                        phone: professional.phone,
+                        role: null,
+                        deleted: professional.deleted
+                });
             })
-        );
+            .then((insertResult: InsertOneWriteOpResult) => {
+                if(insertResult.result.ok == 1){
+                    let savedProfessional: Professional = insertResult.ops[0] as Professional;
+                    return savedProfessional;
+                }
+                else {
+                    return Promise.reject<Professional>(Error("An error ocurred when trying to create a new record"));
+                }
+            })
+        )
     }
 
     update(professional: Professional): Promise<Professional>{
@@ -58,7 +78,17 @@ export class ProfessionalPersistence implements ICrud<Professional> {
                 database = db;
                 return db.collection('professional').update(
                     {professionalId: professional.professionalId},
-                    professional
+                    {
+                        professionalId: professional.professionalId,
+                        pid: professional.pid,
+                        eid: professional.eid,
+                        name: professional.name,
+                        roleId: +professional.roleId,
+                        email: professional.email,
+                        phone: professional.phone,
+                        role: null,
+                        deleted: professional.deleted
+                    }
                 );
             })
             .then((professional: any) => {
@@ -75,11 +105,8 @@ export class ProfessionalPersistence implements ICrud<Professional> {
             .then((db:Db) => {
                 database = db;
                 return db.collection('professional').update(
-                    {professionalId: id}, 
-                    { 
-                        professionalId: id, 
-                        deleted: true 
-                    }
+                    {"professionalId": id}, 
+                    {$set: { "deleted": true }}
                 );
             })
             .then((professional: any) => {

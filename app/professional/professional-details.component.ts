@@ -50,11 +50,17 @@ export class ProfessionalDetailComponent {
     }
 
     onSave() {
-        
+        this._professionalService.saveProfessional(this.professional);
+    }
+    
+    onEdit() {
+        this._professionalService.editProfessional(this.professional);
     }
 
     onDelete() {
-    
+        this._professionalService.deleteProfessional(this.id);
+        console.log(this.id);
+        this._location.back();
     }
 
     onBack() {
