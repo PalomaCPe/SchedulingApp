@@ -31,6 +31,8 @@ export class BookingDetailComponent implements OnInit {
     ngOnInit() {
         this._router.params.subscribe((params: Params) => {
             this.id = +params['id'];
+            this.action = params['action'];
+            console.log(this.action);
         });
 
         this._professionalService.getProfessionalList()
@@ -71,6 +73,14 @@ export class BookingDetailComponent implements OnInit {
 
     endDateChanged(value: Date): void {
         this.booking.endDate = value;
+    }
+
+    onEdit() {
+        this.action = 'edit';
+    }
+
+    onCreate() {
+        this.action = 'edit';
     }
 
     onBack() {

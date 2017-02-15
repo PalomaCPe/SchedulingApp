@@ -36,7 +36,8 @@
     "core-js": "^2.4.1",
     "express": "^4.14.0",
     "mongod": "^2.0.0",
-    "mongodb": "^2.2.22",
+    "mongodb": "^2.2.24",
+    "mongoose": "^4.8.2",
     "rxjs": "5.0.1",
     "systemjs": "0.19.40",
     "zone.js": "0.7.2"
