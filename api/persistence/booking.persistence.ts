@@ -80,10 +80,41 @@ export class BookingPersistence implements ICrud<Booking> {
     }
 
     update(booking: Booking): Promise<Booking> {
-        return null;
+        let database: Db;
+
+        return Promise.resolve<Booking>(
+            Connection.conn()
+                .then((db: Db) => {
+                    database = db;
+                    return db.collection('booking').findOneAndUpdate({ bookingID: booking.id }, {
+                        bookingID: booking.id,
+                        projectID: +booking.projectId,
+                        pid: +booking.professionalId,
+                        initialDate: booking.startDate,
+                        endDate: booking.endDate,
+                        bookingPercentual: booking.percentual,
+                        deleted: booking.deleted
+                    }, { returnOriginal: false });
+                })
+                .then((updateResult: FindAndModifyWriteOpResultObject) => {
+                    database.close();
+
+                    if (updateResult.ok == 1)
+                        return updateResult.value;
+                    else
+                        return Error("An error ocurred while triyng to update a record");
+                }));
     }
 
     delete(id: number): Promise<boolean> {
-        return null;
+        let database: Db;
+        return Connection.conn()
+            .then((db: Db) => {
+                database = db;
+
+                return db.collection('booking').findOneAndUpdate(
+                    { bookingID: id },
+                    { $set: { 'deleted': true } });
+            })
     }
 }

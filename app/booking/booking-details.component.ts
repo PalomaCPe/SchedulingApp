@@ -81,6 +81,7 @@ export class BookingDetailComponent implements OnInit {
 
     onCreate() {
         this.action = 'new';
+        this.booking = new Booking();
     }
 
     onBack() {
@@ -90,6 +91,13 @@ export class BookingDetailComponent implements OnInit {
     onSave() {
         if (this.action === 'new')
             this._bookingService.createBooking(this.booking)
+                .then((bookingSaved: Booking) => {
+                    this.booking = bookingSaved;
+                    this.ngOnInit();
+                    this.action = 'details';
+                });
+        else
+            this._bookingService.editBooking(this.booking)
                 .then((bookingSaved: Booking) => {
                     this.booking = bookingSaved;
                     this.ngOnInit();

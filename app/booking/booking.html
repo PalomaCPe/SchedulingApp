@@ -15,7 +15,7 @@
         <tbody>
             <tr *ngFor="let booking of bookings">
                 <td>{{ booking.project.name }}</td>
-                <td>{{ booking.professional.name }}</td>
+                <td>{{ booking.professional.name }}</td> 
                 <td>{{ booking.startDate | date: 'dd/MM/yyyy' }}</td>
                 <td>{{ booking.endDate | date: 'dd/MM/yyyy' }}</td>
                 <td>{{ booking.percentual | percentual }}</td>

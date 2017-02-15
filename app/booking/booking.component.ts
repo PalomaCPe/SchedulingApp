@@ -36,7 +36,7 @@ export class BookingComponent implements OnInit {
             .then((projects: Project[]) => {
                 this.projects = projects;
                 return this._bookingService.getBookingList();
-            })
+            })  
             .then((bookings: Booking[]) => {
                 this.bookings = bookings;
 

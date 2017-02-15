@@ -61,6 +61,28 @@ export class BookingService {
             .catch(this.errorHandling);
     }
 
+    editBooking(booking: Booking): Promise<Booking> {
+        let url: string = `${SERVICE_URL}/${booking.id}`;
+
+        return this._httpService.put(url, { booking: booking })
+            .toPromise()
+            .then((response: Response) => {
+                return response.json() as Booking;
+            })
+            .catch(this.errorHandling);
+    }
+
+    deleteBooking(id: number): Promise<boolean> {
+        let url: string = `${SERVICE_URL}/${id}`;
+
+        return this._httpService.delete(url)
+            .toPromise()
+            .then((response: Response) => {
+                return response.json() as boolean;
+            })
+            .catch(this.errorHandling);
+    }
+
     errorHandling(error: any) {
         console.log(error.message || error);
     }
