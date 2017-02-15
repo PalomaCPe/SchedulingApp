@@ -1,4 +1,4 @@
-import { MongoClient, Db, FindAndModifyWriteOpResultObject } from 'mongodb';
+import { MongoClient, Db, FindAndModifyWriteOpResultObject, InsertOneWriteOpResult } from 'mongodb';
 
 import { Booking } from '../domain/booking';
 import { ICrud } from './crud.interface';
@@ -31,9 +31,10 @@ export class BookingPersistence implements ICrud<Booking> {
             Connection.conn()
                 .then((db: Db) => {
                     database = db;
-                    return db.collection('booking').findOne({ id: id, deleted: false });
+                    return db.collection('booking').findOne({ id: id, deleted: false })
+                        .then((result: Booking) => { return result; });
                 })
-                .then((booking: any) => {
+                .then((booking: Booking) => {
                     database.close();
 
                     return booking as Booking;
@@ -41,7 +42,41 @@ export class BookingPersistence implements ICrud<Booking> {
     }
 
     create(booking: Booking): Promise<Booking> {
-        return null;
+        let database: Db;
+        let sequence: number;
+
+        return Promise.resolve<Booking>(
+            Connection.getNextSequence('bookingId')
+                .then((retrievedSequence: number) => {
+                    sequence = retrievedSequence;
+                    return Connection.conn();
+                })
+                .then((db: Db) => {
+                    database = db;
+
+                    return db.collection('booking').insertOne({
+                        id: sequence,
+                        startDate: booking.startDate,
+                        endDate: booking.endDate,
+                        percentual: booking.percentual,
+                        projectId: +booking.projectId,
+                        professionalId: +booking.professionalId,
+                        project: null,
+                        professional: null,
+                        deleted: booking.deleted
+                    })
+                })
+                .then((insertResult: InsertOneWriteOpResult) => {
+                    if (insertResult.result.ok == 1) {
+                        let savedBooking: Booking = insertResult.ops[0] as Booking;
+
+                        return savedBooking;
+                    }
+                    else {
+                        return Promise.reject<Booking>(Error("An error ocurred when trying to create a new record"));
+                    }
+                })
+        );
     }
 
     update(booking: Booking): Promise<Booking> {

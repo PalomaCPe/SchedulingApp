@@ -20,7 +20,7 @@ export class BookingService {
 
     getBookingList(): Promise<Booking[]> {
         let url: string = `${SERVICE_URL}/list`;
-        
+
         return this._httpService.get(url)
             .toPromise()
             .then((response: Response) => {
@@ -32,7 +32,7 @@ export class BookingService {
 
     getBooking(id: number): Promise<Booking> {
         let url: string = `${SERVICE_URL}/${id}`;
-        
+
         return this._httpService.get(url)
             .toPromise()
             .then((response: Response) => {
@@ -50,12 +50,16 @@ export class BookingService {
         booking.professional = this.professionals.find(professional => professional.pid == booking.professionalId);
     }
 
-    // getBookings() {
-    //     // BOOKINGS.forEach((item) => {
-    //     //     this.getProfessionalDetails(item);
-    //     //     this.getProjectDetails(item);
-    //     // });
-    // }
+    createBooking(booking: Booking) {
+        let url: string = `${SERVICE_URL}/post`;
+
+        return this._httpService.post(url, { booking: booking })
+            .toPromise()
+            .then((response: Response) => {
+                return response.json() as Booking;
+            })
+            .catch(this.errorHandling);
+    }
 
     errorHandling(error: any) {
         console.log(error.message || error);
