@@ -20,7 +20,6 @@ roleRouter.get('/:id', (request: Request, response: Response) => {
 
     roleApplication.getRole(id)
         .then((role: Role) => {
-            console.log(response);
             response.json(role);
         });
 });

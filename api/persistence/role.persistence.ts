@@ -16,12 +16,10 @@ export class RolePersistence implements ICrud<Role>{
                     database = db;
                     return db.collection('role').find({ deleted: false }).toArray();
                 })
-
                 .then((roles: Role[]) => {
                     database.close();
                     return roles;
-                })
-        );
+                }));
 
     }
     read(id: number): Promise<Role> {

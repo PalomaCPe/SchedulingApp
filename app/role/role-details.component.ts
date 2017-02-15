@@ -30,7 +30,6 @@ export class RoleDetailsComponent implements OnInit {
 
         this._roleService.getRoleById(this.id)
             .then((result: Role) => {
-                console.log(result);
                 this.role = result;
             });
 
@@ -44,8 +43,6 @@ export class RoleDetailsComponent implements OnInit {
     onBack() {
         this._location.back();
     }
-<<<<<<< HEAD
-=======
 
     onEdit(){
         this.action = 'edit';
@@ -54,6 +51,4 @@ export class RoleDetailsComponent implements OnInit {
     OnCreate(){
         this.action = 'edit';
     }
-
->>>>>>> 6e68781502fda39ec664a6d797b8db7903401faf
 }
