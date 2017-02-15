@@ -11,7 +11,7 @@ export class CustomerService {
 
     constructor(private http: Http) { }
 
-    insertCustomer(customer: Customer): Promise<Customer> {
+    createCustomer(customer: Customer): Promise<Customer> {
         return this.http.post(`${this.url}/post`, JSON.stringify(customer)).toPromise()
             .then((res: Response) => res.json().data || res.json())
             .catch((error: Error) => this.errorHandling(error))

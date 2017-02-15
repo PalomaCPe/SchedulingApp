@@ -47,7 +47,7 @@ export class CustomerDetailsComponent implements OnInit {
 
     save() {
         if (this.action === "edit") this._customerService.updateCustomer(this.customer).then(() => { this._router.navigate(['/customers']) })
-        else if (this.action === "new") this._customerService.insertCustomer(this.customer).then(() => { this._router.navigate(['/customers']) })
+        else if (this.action === "new") this._customerService.createCustomer(this.customer).then(() => { this._router.navigate(['/customers']) })
         else console.log("Action Invalid!!");
     }
 

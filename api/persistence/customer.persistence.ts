@@ -27,7 +27,7 @@ export class CustomerPersistence implements ICrud<Customer> {
 
     create(customer: Customer): Promise<Customer> {
         return Promise.resolve(Connection.conn().then((db: Db) => {
-            db.collection('customer').insert(customer);
+            db.collection('customer').insertOne(customer);
             db.close();
             return customer;
         }));
