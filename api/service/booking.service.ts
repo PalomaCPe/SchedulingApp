@@ -42,7 +42,7 @@ bookingRouter.put('/:id', (request: Request, response: Response) => {
         });
 });
 
-bookingRouter.delete('/:id', (request: Request, response: Response) => {
+bookingRouter.delete('/delete/:id', (request: Request, response: Response) => {
     let bookingApplication: BookingApplication = new BookingApplication();
 
     let id: number = +request.params.id;

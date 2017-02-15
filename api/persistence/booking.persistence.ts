@@ -86,13 +86,15 @@ export class BookingPersistence implements ICrud<Booking> {
             Connection.conn()
                 .then((db: Db) => {
                     database = db;
-                    return db.collection('booking').findOneAndUpdate({ bookingID: booking.id }, {
-                        bookingID: booking.id,
-                        projectID: +booking.projectId,
-                        pid: +booking.professionalId,
-                        initialDate: booking.startDate,
+                    return db.collection('booking').findOneAndUpdate({ id: booking.id }, {
+                        id: booking.id,
+                        startDate: booking.startDate,
                         endDate: booking.endDate,
-                        bookingPercentual: booking.percentual,
+                        percentual: booking.percentual,
+                        projectId: +booking.projectId,
+                        professionalId: +booking.professionalId,
+                        project: null,
+                        professional: null,
                         deleted: booking.deleted
                     }, { returnOriginal: false });
                 })
@@ -113,7 +115,7 @@ export class BookingPersistence implements ICrud<Booking> {
                 database = db;
 
                 return db.collection('booking').findOneAndUpdate(
-                    { bookingID: id },
+                    { id: id },
                     { $set: { 'deleted': true } });
             })
     }

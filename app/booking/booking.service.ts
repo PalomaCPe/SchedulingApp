@@ -73,7 +73,7 @@ export class BookingService {
     }
 
     deleteBooking(id: number): Promise<boolean> {
-        let url: string = `${SERVICE_URL}/${id}`;
+        let url: string = `${SERVICE_URL}/delete/${id}`;
 
         return this._httpService.delete(url)
             .toPromise()
