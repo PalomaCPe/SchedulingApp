@@ -27,7 +27,6 @@ export class RolePersistence implements ICrud<Role>{
         );
              
     }
-
     read(id: number): Promise<Role>{
         let database: Db;
         return Promise.resolve<Role>(

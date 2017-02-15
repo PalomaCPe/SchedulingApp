@@ -30,16 +30,23 @@ export class ProjectDetailsComponent implements OnInit {
     private selectedProject: Project = new Project();
     private professionals: Professional[] = [];
     private customers: Customer[] = [];
+    action: string;
     id: number;
     
     ngOnInit() {
-        
-        this._router.params.subscribe((params: Params) => this.id = +params['id']);
 
-        this._projectService.getProfessionalList()
+        let teste: string= 'teste';
+
+        this._router.params.subscribe((params: Params) => {
+            this.id = +params['id'];
+            this.action = params['action'];
+            console.log(this.action);
+        });
+
+        this._professionalService.getProfessionalList()
             .then((professionals: Professional[]) => {
                 this.professionals = professionals;
-                return this._projectService.getCustomers();
+                return this._customerService.getCustomers();
             })
             .then((customers: Customer[]) => {
                 this.customers = customers;
@@ -50,6 +57,8 @@ export class ProjectDetailsComponent implements OnInit {
 
                 this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
                 this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId);
+
+                console.log(this.customers);
             });
 
     }
@@ -68,9 +77,16 @@ export class ProjectDetailsComponent implements OnInit {
         project.customer = this.customers.find(c => c.id === project.customerId);
     }
     
-    backState(){
+    onEdit() {
+        this.action = 'edit';
+    }
+
+    onCreate() {
+        this.action = 'edit';
+    }
+
+    backState() {
         this._location.back();
-        this.selectedProject = null;
     }
     
 }

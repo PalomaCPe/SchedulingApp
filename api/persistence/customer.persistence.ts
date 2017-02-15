@@ -1,26 +1,51 @@
+import { MongoClient, Db, FindAndModifyWriteOpResultObject, Collection } from 'mongodb';
+
 import { Customer } from '../domain/customer';
 import { ICrud } from './crud.interface';
+import { Connection } from './connection';
 
-import { CUSTOMERS } from '../../app/shared/mock';
+import { BOOKINGS } from '../../app/shared/mock';
 
 export class CustomerPersistence implements ICrud<Customer> {
+
     list(): Promise<Customer[]> {
-        return Promise.resolve(CUSTOMERS.filter(customer => customer.deleted === false));
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            let customerList = db.collection('customer').find({ deleted: false }).toArray() as Promise<Customer[]>;
+            db.close();
+            return customerList;
+        }));
     }
 
+
     read(id: number): Promise<Customer> {
-        return Promise.resolve(CUSTOMERS.find(customer => customer.id === id));
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            let customer = db.collection('customer').findOne({ id: id, deleted: false }) as Promise<Customer>
+            db.close();
+            return customer;
+        }));
     }
 
     create(customer: Customer): Promise<Customer> {
-        return Promise.resolve(new Customer());
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            db.collection('customer').insert(JSON.stringify(customer));
+            db.close();
+            return customer;
+        }));
     }
 
     update(customer: Customer): Promise<Customer> {
-        return Promise.resolve(customer);
+         return Promise.resolve(Connection.conn().then((db: Db) => {
+            db.collection('customer').update({ id: customer.id }, JSON.stringify(customer));
+            db.close();
+            return customer;
+        }));
     }
 
     delete(id: number): Promise<boolean> {
-        return Promise.resolve(id ? true : false);
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            db.collection('customer').remove({ id: id, deleted: false });
+            db.close();
+            return Promise.resolve(id ? true : false);
+        }));
     }
 }
