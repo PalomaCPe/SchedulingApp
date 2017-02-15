@@ -41,6 +41,16 @@ export class ProjectService {
             })
             .catch(this.handleError);
     }
+     createProject(project: Project) {
+        let url: string = `${projectUrl}/post`;
+
+        return this._http.post(url, { project: project })
+            .toPromise()
+            .then((response: Response) => {
+                return response.json() as Project;
+            })
+            .catch(this.handleError);
+    }
     
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);

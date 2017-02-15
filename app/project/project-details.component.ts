@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import 'rxjs/add/operator/toPromise';
-
 import { Project } from './project';
 import { ProjectService } from './project.service';
 
@@ -27,15 +25,13 @@ export class ProjectDetailsComponent implements OnInit {
         private _location: Location
     ) { }
     
-    private selectedProject: Project = new Project();
-    private professionals: Professional[] = [];
-    private customers: Customer[] = [];
+    selectedProject: Project = new Project();
+    professionals: Professional[] = [];
+    customers: Customer[] = [];
     action: string;
     id: number;
     
     ngOnInit() {
-
-        let teste: string= 'teste';
 
         this._router.params.subscribe((params: Params) => {
             this.id = +params['id'];
@@ -68,7 +64,7 @@ export class ProjectDetailsComponent implements OnInit {
         this.selectedProject.professional = this.professionals.find(p => p.professionalId === project.sponsorId); 
         this.selectedProject.customer = this.customers.find(c => c.id === project.customerId);
     }
-
+ 
     getProfessional(project: Project) {
         project.professional = this.professionals.find(p => p.professionalId === project.sponsorId);    
     }
@@ -82,11 +78,21 @@ export class ProjectDetailsComponent implements OnInit {
     }
 
     onCreate() {
-        this.action = 'edit';
+        this.action = 'new';
     }
 
     backState() {
         this._location.back();
+    }
+
+    onSave() {
+        if (this.action === 'new')
+            this._projectService.createProject(this.selectedProject)
+                .then((projectSave: Project) => {
+                    this.selectedProject = projectSave;
+                    this.ngOnInit();
+                    this.action = 'details';
+                });
     }
     
 }

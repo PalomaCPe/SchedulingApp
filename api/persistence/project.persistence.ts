@@ -1,4 +1,4 @@
-import { MongoClient, Db, FindAndModifyWriteOpResultObject } from 'mongodb';
+import { MongoClient, Db, FindAndModifyWriteOpResultObject, InsertOneWriteOpResult} from 'mongodb';
 import { Project } from '../domain/project'
 import { ICrud } from './crud.interface'
 
@@ -22,11 +22,58 @@ export class ProjectPersistence implements ICrud<Project> {
     }
 
     read(id: number): Promise<Project>{
-        return Promise.resolve(PROJECTS.find(project => project.projectId === id));
+        let database: Db;
+        return Promise.resolve<Project>(
+            Connection.conn()
+                .then((db: Db) => {
+                    database = db;
+                    return db.collection('projects').findOne({ id: id, deleted: false });
+                })
+                .then((project: any) => {
+                    database.close();
+
+                    return project as Project;
+                }));
     }
 
     create(project: Project): Promise<Project>{
-        return Promise.resolve(new Project());
+       
+        let database: Db;
+        let sequence: number;
+
+        return Promise.resolve<Project>(
+            Connection.getNextSequence('projectId')
+                .then((retrievedSequence: number) => {
+                    sequence = retrievedSequence;
+                    return Connection.conn();
+                })
+                .then((db: Db) => {
+                    database = db;
+
+                    return db.collection('project').insertOne({
+                        id: sequence,
+                        name: project.name,
+                        dtInicial: project.dtInitial,
+                        dtFinal: project.dtFinal,
+                        customerId: +project.customerId,
+                        wbs: project.wbs,
+                        professionalId: +project.sponsorId,
+                        customer: null,
+                        professional: null,
+                        deleted: project.deleted
+                    })
+                })
+                .then((insertResult: InsertOneWriteOpResult) => {
+                    if (insertResult.result.ok == 1) {
+                        let savedProject: Project = insertResult.ops[0] as Project;
+
+                        return savedProject;
+                    }
+                    else {
+                        return Promise.reject<Project>(Error("An error ocurred when trying to create a new record"));
+                    }
+                })
+        );
     }
 
     update(project: Project): Promise<Project>{

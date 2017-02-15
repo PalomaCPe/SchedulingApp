@@ -13,7 +13,7 @@ import { ProjectService } from './project.service';
     imports: [BrowserModule, SharedModule, FormsModule,   
         RouterModule.forRoot([
             { path: 'projects', component: ProjectComponent},
-            { path: 'projects/details/:id', component: ProjectDetailsComponent}
+            { path: 'projects/:action/:id', component: ProjectDetailsComponent}
         ])],
     declarations: [ ProjectComponent, ProjectDetailsComponent ],
     providers: [ ProjectService ]   
