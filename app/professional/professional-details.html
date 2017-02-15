@@ -3,31 +3,31 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="">PID</label>
-                <input type="text" class="form-control" name="pidName" placeholder="{{professional.pid}}">
+                <input type="text" class="form-control" name="pidName" [(ngModel)]="professional.pid" placeholder="{{professional.pid}}">
             </div>
             <div class="col-md-6">
                 <label for="">EID</label>
-                <input type="text" name="eidImput" class="form-control" placeholder="{{professional.eid}}">
+                <input type="text" name="eidImput" class="form-control" [(ngModel)]="professional.eid" placeholder="{{professional.eid}}">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <label for="">Nome</label>
-                <input type="text" name="nameInput" class="form-control" placeholder="{{professional.name}}">
+                <input type="text" name="nameInput" class="form-control" [(ngModel)]="professional.name" placeholder="{{professional.name}}">
             </div>
             <div class="col-md-6">
                 <label for="">Email</label>
-                <input type="email" name="emailInput" class="form-control" placeholder="{{professional.email}}">
+                <input type="email" name="emailInput" class="form-control" [(ngModel)]="professional.email" placeholder="{{professional.email}}">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <label for="">Telefone</label>
-                <input type="text" name="telInput" class="form-control" placeholder="{{professional.phone}}">
+                <input type="text" name="telInput" class="form-control" [(ngModel)]="professional.phone" placeholder="{{professional.phone}}">
             </div>
             <div class="col-md-6">
                 <label for="Cargo">Cargo</label>
-                <select name="Cargos" class="form-control" required>                  
+                <select name="Cargos" class="form-control">                  
                     <option *ngFor="let role of roles" name="roleOption" value="">{{role.name}}</option>
                 </select>
             </div>
@@ -35,8 +35,8 @@
         <!-- Button Submit -->
         <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onCreate()">Novo</button>
         <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onEdit()">Alterar</button>                
-        <button *ngIf="action === 'edit'" type="button" class="btn btn-primary btn-outline">Salvar</button>
-        <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" >Excluir</button>
+        <button *ngIf="action === 'edit'" type="button" class="btn btn-primary btn-outline" (click)="onSave()">Salvar</button>
+        <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onDelete()" >Excluir</button>
         <button type="button" class="btn btn-default" (click)="onBack()">Voltar</button>
     </form>
 </div>
