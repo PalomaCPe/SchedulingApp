@@ -1,4 +1,4 @@
-import { MongoClient, Db, FindAndModifyWriteOpResultObject } from 'mongodb';
+import { MongoClient, Db, FindAndModifyWriteOpResultObject, InsertOneWriteOpResult } from 'mongodb';
 
 import { Role } from '../domain/role';
 import { ICrud } from './crud.interface';
@@ -37,7 +37,36 @@ export class RolePersistence implements ICrud<Role>{
     }
 
     create(role: Role): Promise<Role> {
-        return null;
+        let database: Db;
+        let sequence: number;
+
+        return Promise.resolve<Role>(
+            Connection.getNextSequence('roleId')
+                .then((retrivedSequence: number) => {
+                    sequence = retrivedSequence;
+                    return Connection.conn();
+                })
+                .then((db: Db) => {
+                    database = db;
+                    return db.collection('role').insertOne({
+                        id: sequence,
+                        name: role.name,
+                        brc: role.brc,
+                        description: role.description, 
+                        level: +role.level,
+                        deleted: false
+                    })
+                })
+                .then((insertResult: InsertOneWriteOpResult) => {
+                    if (insertResult.result.ok == 1) {
+                        let savedRole: Role = insertResult.ops[0] as Role;
+                        return savedRole;
+                    }
+                    else {
+                        return Promise.reject<Role>(Error("An error ocurred when trying to create a new record"));
+                    }
+                })
+        );
     }
 
     update(role: Role): Promise<Role> {

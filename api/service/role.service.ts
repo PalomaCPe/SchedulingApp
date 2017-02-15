@@ -13,7 +13,6 @@ roleRouter.get('/list', (request: Request, response: Response) => {
         });
 });
 
-
 roleRouter.get('/:id', (request: Request, response: Response) => {
     let roleApplication: RoleApplication = new RoleApplication();
     let id: number = +request.params.id;
@@ -24,8 +23,11 @@ roleRouter.get('/:id', (request: Request, response: Response) => {
         });
 });
 
-
 roleRouter.post('/post', (request: Request, response: Response) => {
     let roleApplication: RoleApplication = new RoleApplication();
 
+    roleApplication.createRole(request.body.role)
+        .then((roleSaved: Role) => {
+            response.json(roleSaved);
+        });
 });
