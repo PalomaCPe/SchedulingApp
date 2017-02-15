@@ -59,7 +59,6 @@ export class ProfessionalDetailComponent {
 
     onDelete() {
         this._professionalService.deleteProfessional(this.id);
-        console.log(this.id);
         this._location.back();
     }
 

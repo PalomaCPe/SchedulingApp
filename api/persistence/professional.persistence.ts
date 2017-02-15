@@ -104,7 +104,7 @@ export class ProfessionalPersistence implements ICrud<Professional> {
             Connection.conn()
             .then((db:Db) => {
                 database = db;
-                return db.collection('professional').update(
+                return db.collection('professional').findOneAndUpdate(
                     {"professionalId": id}, 
                     {$set: { "deleted": true }}
                 );
