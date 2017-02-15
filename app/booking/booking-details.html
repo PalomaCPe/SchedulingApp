@@ -39,7 +39,7 @@
             <div class="col-sm-10">
                 <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onCreate()">Novo</button>
                 <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" (click)="onEdit()">Alterar</button>                
-                <button *ngIf="action === 'edit'" type="button" class="btn btn-primary btn-outline">Salvar</button>
+                <button *ngIf="action != 'details'" type="button" class="btn btn-primary btn-outline" (click)="onSave()">Salvar</button>
                 <button *ngIf="action === 'details'" type="button" class="btn btn-primary btn-outline" >Excluir</button>
                 <button type="button" class="btn btn-default" (click)="onBack()">Voltar</button>
             </div>

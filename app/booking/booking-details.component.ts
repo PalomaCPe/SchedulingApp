@@ -80,10 +80,20 @@ export class BookingDetailComponent implements OnInit {
     }
 
     onCreate() {
-        this.action = 'edit';
+        this.action = 'new';
     }
 
     onBack() {
         this._location.back();
+    }
+
+    onSave() {
+        if (this.action === 'new')
+            this._bookingService.createBooking(this.booking)
+                .then((bookingSaved: Booking) => {
+                    this.booking = bookingSaved;
+                    this.ngOnInit();
+                    this.action = 'details';
+                });
     }
 }
