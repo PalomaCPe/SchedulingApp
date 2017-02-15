@@ -14,6 +14,7 @@ import { RoleService } from './role.service';
 export class RoleDetailsComponent implements OnInit {
     private role: Role = new Role();
     private levels: number[];
+    action : string;
 
     constructor(private _roleService: RoleService,
         private _router: ActivatedRoute,
@@ -34,6 +35,14 @@ export class RoleDetailsComponent implements OnInit {
 
     onBack() {
         this._location.back();
+    }
+
+    onEdit(){
+        this.action = 'edit';
+    }
+
+    OnCreate(){
+        this.action = 'edit';
     }
 
 }
