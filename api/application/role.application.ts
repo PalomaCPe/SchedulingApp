@@ -5,7 +5,6 @@ export class RoleApplication{
 
     getRoles(): Promise<Role[]>{
         let rolePersistence: RolePersistence = new RolePersistence();
-
         return rolePersistence.list();
     }
 

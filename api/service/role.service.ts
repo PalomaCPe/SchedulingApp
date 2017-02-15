@@ -11,16 +11,22 @@ roleRouter.get('/list', (request: Request, response: Response) => {
         .then((result: Role[]) => {
             response.json(result);
         });
-
 });
+
 
 roleRouter.get('/:id', (request: Request, response: Response) => {
     let roleApplication: RoleApplication = new RoleApplication();
-    let id: number =+ request.params.id;
+    let id: number = +request.params.id;
 
     roleApplication.getRole(id)
-    .then ((role : Role) =>{
-        response.json(role)
-    })
+        .then((role: Role) => {
+            console.log(response);
+            response.json(role);
+        });
+});
+
+
+roleRouter.post('/post', (request: Request, response: Response) => {
+    let roleApplication: RoleApplication = new RoleApplication();
 
 });

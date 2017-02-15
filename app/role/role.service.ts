@@ -3,25 +3,23 @@ import { Http, Response } from '@angular/http';
 
 import { Role } from './role';
 
-// import { ROLES } from '../shared/mock';
-
 const SERVICE_URL: string = 'api/role';
 
 
 @Injectable()
 export class RoleService {
 
-    constructor(private _httpService: Http) {}
+    constructor(private _httpService: Http) { }
 
     getRoleList(): Promise<Role[]> {
         let url: string = `${SERVICE_URL}/list`;
 
         return this._httpService.get(url)
-        .toPromise()
-        .then((response: Response) => {
-            return response.json() as Role[];
-        })
-        .catch(this.errorHandling);
+            .toPromise()
+            .then((response: Response) => {
+                return response.json() as Role[];
+            })
+            .catch(this.errorHandling);
     }
 
     levelsList(): number[] {
@@ -33,13 +31,25 @@ export class RoleService {
 
         return this._httpService.get(url)
             .toPromise()
-            .then((response: Response) => {
+            .then((response: Response) => { 
                 return response.json() as Role;
             })
             .catch(this.errorHandling);
     }
 
+    // saveRole(id: Number): Promise<Role> {
+    //     let url: string = `${SERVICE_URL}/${id}`;
+
+    //     return this._httpService.post(url)
+    //         .toPromise()
+    //         .then((response: Response) => {
+    //             console.log(response);
+    //         })
+    //         .catch(this.errorHandling);
+    // }
+
+
     errorHandling(error: any) {
-        console.log(error.message || error);
+        // console.log(error.message || error);
     }
 }

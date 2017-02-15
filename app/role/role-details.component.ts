@@ -14,6 +14,8 @@ import { RoleService } from './role.service';
 export class RoleDetailsComponent implements OnInit {
     private role: Role = new Role();
     private levels: number[];
+    private id: Number;
+    private action: String;
 
     constructor(private _roleService: RoleService,
         private _router: ActivatedRoute,
@@ -21,19 +23,25 @@ export class RoleDetailsComponent implements OnInit {
 
     ngOnInit() {
         this._router.params.subscribe((params: Params) => {
-            this.role.id = +params['id'];
+            this.id = +params['id'];
+            this.action = params['action'];
+            console.log(params);
         });
 
-        this._roleService.getRoleById(this.role.id)
+        this._roleService.getRoleById(this.id)
             .then((result: Role) => {
+                console.log(result);
                 this.role = result;
             });
 
         this.levels = this._roleService.levelsList();
     }
 
+    save(id: Number) {
+        // this._roleService.saveRole(id);
+    }
+
     onBack() {
         this._location.back();
     }
-
 }

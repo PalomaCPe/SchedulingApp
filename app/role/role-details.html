@@ -1,4 +1,4 @@
- <form name="teste" *ngIf="role">
+ <form name="teste">
         <div class="form-group col-md-6">
             <label for="">Nome do Cargo</label>
             <input type="text" name="nameRole" class="form-control" placeholder="Nome do Cargo" [(ngModel)]="role.name">
@@ -17,13 +17,11 @@
                 <option *ngFor="let level of levels" value="{{level}}">{{level}}</option>
             </select>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-12">
             <button class="btn btn-primary" (click)="onBack()">Voltar</button>
-        </div>
-        <div class="col-md-2">
-            <button class="btn btn-primary">Deletar</button>
-        </div>
-        <div class="col-md-2">
-            <button class="btn btn-primary">Novo</button>
+            <button class="btn btn-default">Alterar</button>
+            <button class="btn btn-default">Salvar</button>
+            <button class="btn btn-default">Deletar</button>
+            <button class="btn btn-default">Novo</button>
         </div>
     </form>

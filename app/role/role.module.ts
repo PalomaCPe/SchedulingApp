@@ -10,7 +10,7 @@ import { RoleDetailsComponent } from './role-details.component';
 @NgModule({
     imports: [BrowserModule, FormsModule, SharedModule, RouterModule.forRoot([
         { path: 'roles', component: RoleComponent},
-        { path: 'roles/details/:id', component: RoleDetailsComponent}
+        { path: 'roles/:action/:id', component: RoleDetailsComponent}
     ])],
 
     declarations: [RoleComponent, RoleDetailsComponent],
