@@ -1,5 +1,6 @@
 import { MongoClient, Db, FindAndModifyWriteOpResultObject } from 'mongodb';
 
+//mongo db string connection
 const mongoUrl: string = "mongodb://localhost:27017/schedulingApp";
 
 export class Connection {
