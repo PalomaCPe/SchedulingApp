@@ -7,7 +7,7 @@ import { Connection } from './connection';
 import { BOOKINGS } from '../../app/shared/mock';
 
 export class BookingPersistence implements ICrud<Booking> {
-    
+
     list(): Promise<Booking[]> {
         let database: Db;
         return Promise.resolve(
@@ -15,7 +15,7 @@ export class BookingPersistence implements ICrud<Booking> {
                 .then((db: Db) => {
                     database = db;
 
-                    return db.collection('booking').find().toArray();
+                    return db.collection('booking').find({ deleted: false }).toArray();
                 })
                 .then((bookings: Booking[]) => {
                     database.close();
@@ -26,7 +26,18 @@ export class BookingPersistence implements ICrud<Booking> {
     }
 
     read(id: number): Promise<Booking> {
-        return null;//Promise.resolve(BOOKINGS.find(b => b.id === id));;
+        let database: Db;
+        return Promise.resolve<Booking>(
+            Connection.conn()
+                .then((db: Db) => {
+                    database = db;
+                    return db.collection('booking').findOne({ id: id, deleted: false });
+                })
+                .then((booking: any) => {
+                    database.close();
+
+                    return booking as Booking;
+                }));
     }
 
     create(booking: Booking): Promise<Booking> {
