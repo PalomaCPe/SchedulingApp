@@ -12,63 +12,43 @@ export class CustomerPersistence implements ICrud<Customer> {
     private customerCollection: Collection;
 
     list(): Promise<Customer[]> {
-        try {
-            this.openConn();
-            return Promise.resolve(this.customerCollection.find({ deleted: false }).toArray()
-                .then((customerList: Customer[]) => { return customerList }))
-        }
-        catch (error) { throw error }
-        finally { this.closeConn() }
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            let customerList = db.collection('customer').find({ deleted: false }).toArray() as Promise<Customer[]>;
+            db.close();
+            return customerList;
+        }));
     }
 
+
     read(id: number): Promise<Customer> {
-        try {
-            this.openConn();
-            return Promise.resolve(this.customerCollection.findOne({ id: id, deleted: false })
-                .then((customer: Customer) => { return customer }))
-        }
-        catch (error) { throw error }
-        finally { this.closeConn() }
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            let customer = db.collection('customer').findOne({ id: id, deleted: false }) as Promise<Customer>
+            db.close();
+            return customer;
+        }));
     }
 
     create(customer: Customer): Promise<Customer> {
-        try {
-            this.openConn();
-            this.customerCollection.insert(JSON.stringify(customer));
-            return Promise.resolve(customer);
-        }
-        catch (error) { throw error }
-        finally { this.closeConn() }
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            db.collection('customer').insert(JSON.stringify(customer));
+            db.close();
+            return customer;
+        }));
     }
 
     update(customer: Customer): Promise<Customer> {
-        try {
-            this.openConn();
-            this.customerCollection.update({ id: customer.id }, JSON.stringify(customer));
-            return Promise.resolve(customer);
-        }
-        catch (error) { throw error }
-        finally { this.closeConn() }
+         return Promise.resolve(Connection.conn().then((db: Db) => {
+            db.collection('customer').update({ id: customer.id }, JSON.stringify(customer));
+            db.close();
+            return customer;
+        }));
     }
 
     delete(id: number): Promise<boolean> {
-        try {
-            this.openConn();
-            this.customerCollection.remove({ id: id, deleted: false });
+        return Promise.resolve(Connection.conn().then((db: Db) => {
+            db.collection('customer').remove({ id: id, deleted: false });
+            db.close();
             return Promise.resolve(id ? true : false);
-        }
-        catch (error) { throw error }
-        finally { this.closeConn() }
+        }));
     }
-
-    openConn() {
-        Connection.conn().then((db: Db) => {
-            this.database = db
-            this.customerCollection = db.collection('customer')
-        });
-    }
-    closeConn() {
-        this.database.close();
-    }
-
 }
