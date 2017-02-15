@@ -40,10 +40,14 @@ export class BookingComponent implements OnInit {
             .then((bookings: Booking[]) => {
                 this.bookings = bookings;
 
-                this.bookings.forEach((obj) => {
-                    obj.project = this.projects.find(p => p.projectId === obj.projectId);
-                    obj.professional = this.professionals.find(p => p.professionalId === obj.professionalId);
-                });
+                this.getCompletedBookings();
             });
+    }
+
+    getCompletedBookings(): void {
+        this.bookings.forEach((obj) => {
+            obj.project = this.projects.find(p => p.projectId === obj.projectId);
+            obj.professional = this.professionals.find(p => p.professionalId === obj.professionalId);
+        });
     }
 }

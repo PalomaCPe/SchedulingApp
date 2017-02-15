@@ -15,7 +15,7 @@ import { BookingService } from './booking.service';
     imports: [BrowserModule, SharedModule, FormsModule,   
         RouterModule.forRoot([
             { path: 'bookings', component: BookingComponent},
-            { path: 'booking/details/:id', component: BookingDetailComponent}
+            { path: 'booking/:action/:id', component: BookingDetailComponent}
         ])],
     declarations: [ BookingComponent, PercentualFilter, BookingDetailComponent ],
     providers: [ BookingService ]   
